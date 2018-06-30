@@ -4,7 +4,11 @@ const CleanWebPackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
+<<<<<<< HEAD
     main: './app/index.js',
+=======
+    main: './src/index.js',
+>>>>>>> 9611cff452564a7b7f13abdb7c7440c44a182a4f
   },
   output: {
     filename: 'bundle.js',
