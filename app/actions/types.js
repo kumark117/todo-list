@@ -1,0 +1,3 @@
+export const GET_TODOS_BEGIN = 'GET_TODOS_BEGIN';
+export const GET_TODOS_SUCCESS = 'GET_TODOS_SUCCESS';
+export const GET_TODOS_ERROR= 'GET_TODOS_ERROR';
