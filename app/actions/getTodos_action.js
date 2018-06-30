@@ -25,7 +25,7 @@ export const getTodosError = (error) => {
     }
 }
 
-export function getChain() {
+export function getTodos() {
     return dispatch => {
         dispatch(getTodosBegin())
         return axios.get('http://localhost:8000/api/todos')

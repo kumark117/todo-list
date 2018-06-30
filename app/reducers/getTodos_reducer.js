@@ -9,7 +9,7 @@ const initialState = {
     todos: {}
 }
     
-export default function GetChainReducer(state=initialState, action) {
+export default function GetTodosReducer(state=initialState, action) {
     switch (action.type) {
         case GET_TODOS_BEGIN:
             return {
