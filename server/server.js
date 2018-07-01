@@ -11,10 +11,15 @@ const todoRouter = express.Router();
 app.use('/api', todoRouter);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-//app.use(cors());
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS, HEAD');
+       next();
+ });
 
 todoRouter.route('/todos')
-    .post(cors(), (req, res) => {
+    .post((req, res) => {
         var todo = new Todos(req.body);
         console.log(todo.id)
         todo.save((err, todo) => {

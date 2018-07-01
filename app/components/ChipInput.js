@@ -9,6 +9,9 @@ const ChipTags = (props) => {
             style = {{ 'width': '100%', 'marginBottom': 20 }}
             fullWidth = {true}
             floatingLabelText = "Tags"
+            value={props.value}
+            onRequestAdd={(chip) => props.onAddChip(chip)}
+            onRequestDelete={(chip, index) => props.onRemoveChip(chip, index)}
         />
     );
 }
