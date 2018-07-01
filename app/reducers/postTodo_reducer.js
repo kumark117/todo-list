@@ -1,26 +1,26 @@
 import { 
-    POST_TODOS_BEGIN,
-    POST_TODOS_SUCCESS,
-    POST_TODOS_ERROR } from '../actions/types';
+    POST_TODO_BEGIN,
+    POST_TODO_SUCCESS,
+    POST_TODO_ERROR } from '../actions/types';
 
 const initialState = {
     isLoading: false,
     error: null
 }
     
-export default function PostTodosReducer(state=initialState, action) {
+export default function PostTodoReducer(state=initialState, action) {
     switch (action.type) {
-        case POST_TODOS_BEGIN:
+        case POST_TODO_BEGIN:
             return {
                 ...state, 
                 isLoading: true
             }
-        case POST_TODOS_SUCCESS:
+        case POST_TODO_SUCCESS:
             return {
                 ...state,
                 isLoading: false
             }
-        case POST_TODOS_ERROR:
+        case POST_TODO_ERROR:
             return {
                 ...state,
                 isLoading: false,

@@ -1,42 +1,16 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 
-export default class Header extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            input: ""
-        }
-    };
+const TextInput = (props) => {
 
-    onChange = event => {
-        console.log(this.state.text);
-        const { value: input } = event.target;
-        this.setState({
-            input
-        });
-    };
-
-    onKeyDown = event => {
-        const { value } = event.target;
-        if (event.which === 13) {
-            //this.props.onSubmit(value);
-            console.log('Enter')
-            this.setState({
-                input: ""
-            });
-        }
-    };
-
-    render() {
-        return (
-            <TextField
-                floatingLabelText="What do you need to do?"
-                value={this.state.input}
-                onChange={this.onChange}
-                onKeyDown={this.onKeyDown}
-                style={{ 'width': '100% ', 'fontSize': 20 }}
-            />
-        );
-    } 
+    return (
+        <TextField
+            floatingLabelText="What do you need to do?"
+            value={props.value}
+            onChange={props.onChange}
+            style={{ 'width': '100%', 'fontSize': 20, 'marginBottom': 10 }}
+        />
+    );
 }
+
+export default TextInput;

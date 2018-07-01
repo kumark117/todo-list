@@ -20,7 +20,7 @@ export default function GetTodosReducer(state=initialState, action) {
             return {
                 ...state,
                 isLoading: false,
-                data: action.payload
+                todos: action.payload
             }
         case GET_TODOS_ERROR:
             return {

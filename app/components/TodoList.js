@@ -7,7 +7,15 @@ export default class TodoList extends Component {
     render() {
         return (
             <div>
-                <TodoRow />
+                {
+                    this.props.todos.map((todo, key) => {
+                        return (
+                            <TodoRow 
+                                key={todo._id}
+                            />
+                        )
+                    })
+                }
             </div>
         )
     }

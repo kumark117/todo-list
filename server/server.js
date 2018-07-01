@@ -11,10 +11,10 @@ const todoRouter = express.Router();
 app.use('/api', todoRouter);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
+//app.use(cors());
 
 todoRouter.route('/todos')
-    .post((req, res) => {
+    .post(cors(), (req, res) => {
         var todo = new Todos(req.body);
         console.log(todo.id)
         todo.save((err, todo) => {
@@ -26,7 +26,7 @@ todoRouter.route('/todos')
         });
 
     })
-    .get((req, res) => {
+    .get(cors(), (req, res) => {
         Todos.find((err, todos) => {
             if (err) { 
                 console.log(err) 
