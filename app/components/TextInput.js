@@ -11,19 +11,19 @@ export default class Header extends Component {
 
     onChange = event => {
         console.log(this.state.text);
-        const { value: text } = e.target;
+        const { value: input } = event.target;
         this.setState({
-            text,
+            input
         });
     };
 
-    onKeyDown = e => {
-        const { value } = e.target;
-        if (e.which === 13) {
+    onKeyDown = event => {
+        const { value } = event.target;
+        if (event.which === 13) {
             //this.props.onSubmit(value);
             console.log('Enter')
             this.setState({
-                text: "",
+                input: ""
             });
         }
     };
@@ -35,6 +35,7 @@ export default class Header extends Component {
                 value={this.state.input}
                 onChange={this.onChange}
                 onKeyDown={this.onKeyDown}
+                style={{ 'width': '100% ', 'fontSize': 20 }}
             />
         );
     } 

@@ -4,6 +4,7 @@ import Paper from 'material-ui/Paper';
 import TextInput from '../components/TextInput';
 import { connect } from 'react-redux';
 import { getTodos } from '../actions/getTodos_action';
+import TodoList from '../components/TodoList';
 
 class HomePage extends Component {
   componentDidMount() {
@@ -17,6 +18,7 @@ class HomePage extends Component {
             zDepth={2}
             style={{ 'padding': 40, 'paddingTop': 20 }} >
             <TextInput />
+            <TodoList />
           </Paper>
         </div>
       )
