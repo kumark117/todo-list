@@ -8,18 +8,24 @@ const Todos = require('./models/todoModel');
 const port = process.env.PORT || 3000;
 const todoRouter = express.Router();
 
+app.use(cors());
 app.use('/api', todoRouter);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS, HEAD');
-       next();
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+    if (req.method === 'OPTIONS') {
+        console.log("options")
+        return res.send(200);
+    } else {
+        return next();
+    }
  });
 
 todoRouter.route('/todos')
-    .post((req, res) => {
+     .post((req, res) => {
         var todo = new Todos(req.body);
         console.log(todo.id)
         todo.save((err, todo) => {
@@ -29,7 +35,6 @@ todoRouter.route('/todos')
                 res.status(201).send(todo);
             }
         });
-
     })
     .get(cors(), (req, res) => {
         Todos.find((err, todos) => {
@@ -44,4 +49,3 @@ todoRouter.route('/todos')
 app.listen(port, () => {
     console.log('Running on port ' + port)
 });
-
