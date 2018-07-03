@@ -40,8 +40,7 @@ class TodoInputContainer extends Component {
     }
 
     onRemoveChip = (chip, index) => {
-        console.log(chip, index)
-        this.setState({
+        this.setState({     // TODO
             tags: this.state.tags.filter((_, i) => {
                 i > 0
             })
@@ -49,7 +48,6 @@ class TodoInputContainer extends Component {
     }
 
     render() {
-        console.log(this.state.tags)
         return (
             <div style={{ 'marginBottom': 50 }}>
                 <TextInput 
@@ -60,7 +58,8 @@ class TodoInputContainer extends Component {
                     onAddChip={this.onAddChip}
                     onRemoveChip={this.onRemoveChip} />
                 <AddButton
-                    onClick={this.onClickButton} />
+                    onClick={this.onClickButton}
+                    disabled={this.state.todo.length > 0 ? false : true} />
             </div>
         )
     }
@@ -68,7 +67,7 @@ class TodoInputContainer extends Component {
 
 function mapDispatchToProps(dispatch, values) { 
     return {
-        postTodo: () => dispatch(postTodo(values))
+        postTodo: (values) => dispatch(postTodo(values))
     };
 }
 

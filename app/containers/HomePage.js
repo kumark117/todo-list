@@ -14,10 +14,10 @@ class HomePage extends Component {
   }
 
   renderTodos = () => {
-    if (!this.props.todos.data) {
+    if (!this.props.todos.length) {
       return <CircularProgress size={40} thickness={5} />
     } else {
-      return <TodoList todos={this.props.todos.data} />
+      return <TodoList todos={this.props.todos} />
     }
   }
 
@@ -28,7 +28,7 @@ class HomePage extends Component {
           zDepth={2}
           style={{'padding': 40, 'paddingTop': 20, 'marginRight': 25 }}
         >
-          <SummaryBar todos={this.props.todos.data} />
+          <SummaryBar todos={this.props.todos} />
         </Paper>
         <Paper
           zDepth={2}

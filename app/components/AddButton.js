@@ -7,7 +7,8 @@ const AddButton = (props) => {
         <Button 
             color="primary"
             variant="fab"
-            onClick={props.onClick} >
+            onClick={props.onClick}
+            disabled={props.disabled} >
             <AddIcon />
         </Button>
     )

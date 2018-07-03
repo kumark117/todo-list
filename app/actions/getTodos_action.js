@@ -14,7 +14,7 @@ export const getTodosBegin = () => {
 export const getTodosSuccess = (response) => {
     return {
         type: GET_TODOS_SUCCESS,
-        payload: response
+        payload: response.data
     };
 }
 

@@ -1,7 +1,10 @@
 import { 
     GET_TODOS_BEGIN,
     GET_TODOS_SUCCESS,
-    GET_TODOS_ERROR } from '../actions/types';
+    GET_TODOS_ERROR,
+    POST_TODO_BEGIN,
+    POST_TODO_SUCCESS,
+    POST_TODO_ERROR } from '../actions/types';
 
 const initialState = {
     isLoading: false,
@@ -9,7 +12,7 @@ const initialState = {
     todos: {}
 }
     
-export default function GetTodosReducer(state=initialState, action) {
+export default function todosReducer(state=initialState, action) {
     switch (action.type) {
         case GET_TODOS_BEGIN:
             return {
@@ -28,6 +31,22 @@ export default function GetTodosReducer(state=initialState, action) {
                 isLoading: false,
                 error: action.error
             }  
+        case POST_TODO_BEGIN:
+            return {
+                ...state, 
+                isLoading: true
+            }
+        case POST_TODO_SUCCESS:
+            return {
+                ...state,
+                isLoading: false
+            }
+        case POST_TODO_ERROR:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.error
+            } 
         default:
             return state;
     }
