@@ -38,11 +38,23 @@ todoRouter.route('/todos')
         });
     })
     .get((req, res) => {
-        Todos.find((err, todos) => {
+        Todo.find((err, todos) => {
             if (err) { 
                 console.log(err) 
             } else {
                 res.json(todos);
+            }
+        });
+    });
+
+todoRouter.route('/tags')
+    .get((req, res) => {
+        let query = "tags";
+        Todo.find().distinct(query, (err, docs) => {
+            if (err) {
+                console.log(err)
+            } else {
+                res.json(docs)
             }
         });
     });

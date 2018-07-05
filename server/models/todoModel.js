@@ -5,7 +5,7 @@ var todoModel = new Schema({
     id: {
         type: Number
     },
-    name: {
+    todo: {
         type: String
     },
     tags: {

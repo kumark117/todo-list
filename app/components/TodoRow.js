@@ -3,29 +3,26 @@ import { ListItem } from 'material-ui/List';
 import Checkbox from 'material-ui/Checkbox';
 import FontIcon from 'material-ui/FontIcon';
 import IconButton from 'material-ui/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 export default class TodoRow extends Component {
   render() {
-    const { todo, handleRemoveTodo, handleCompleteTodo } = this.props;
+    const { todo, tags, complete } = this.props;
 
     return (
       <ListItem
-        primaryText="test"
+        primaryText={todo}
         leftCheckbox={
           <Checkbox
-            checked={false}
+            checked={complete ? true : false}
           />
         }
         rightIconButton={
           <IconButton >
-            <FontIcon
-              className="material-icons"
-              color="red"
-            >
-              clear
-            </FontIcon>
+            <DeleteIcon />
           </IconButton>
         }
+        style={complete ? styles.completed : {}}
       />
     );
   }

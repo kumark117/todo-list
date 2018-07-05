@@ -5,11 +5,13 @@ import ChipInput from '../components/ChipInput';
 import AddButton from '../components/AddButton';
 import { connect } from 'react-redux';
 import { postTodo } from '../actions/postTodo_actions';
+import { getTodos } from '../actions/getTodos_actions';
 
 class TodoInputContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: undefined,
             todo: "",
             tags: []
         }
@@ -22,11 +24,12 @@ class TodoInputContainer extends Component {
     };
 
     onClickButton = () => {
-        if (!this.state.todo) {
-            console.log('enter text')
-        } else {
-            this.props.postTodo(this.state)
+        let valuesToPost = {
+            ...this.state,
+            id: this.props.todos.length
         };
+        this.props.postTodo(valuesToPost)
+        .then(() => this.props.getTodos());
         this.setState({
             todo: "",
             tags: []
@@ -67,7 +70,8 @@ class TodoInputContainer extends Component {
 
 function mapDispatchToProps(dispatch, values) { 
     return {
-        postTodo: (values) => dispatch(postTodo(values))
+        postTodo: (values) => dispatch(postTodo(values)),
+        getTodos: () => dispatch(getTodos())
     };
 }
 

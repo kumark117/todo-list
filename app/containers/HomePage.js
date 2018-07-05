@@ -3,7 +3,8 @@ import { Card } from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
 import TodoInputContainer from './TodoInputContainer';
 import { connect } from 'react-redux';
-import { getTodos } from '../actions/getTodos_action';
+import { getTodos } from '../actions/getTodos_actions';
+import { getTags } from '../actions/getTags_actions';
 import TodoList from '../components/TodoList';
 import CircularProgress from 'material-ui/CircularProgress';
 import SummaryBar from './SummaryBar';
@@ -11,6 +12,7 @@ import SummaryBar from './SummaryBar';
 class HomePage extends Component {
   componentDidMount() {
     this.props.getTodos();
+    this.props.getTags();
   }
 
   renderTodos = () => {
@@ -28,13 +30,16 @@ class HomePage extends Component {
           zDepth={2}
           style={{'padding': 40, 'paddingTop': 20, 'marginRight': 25 }}
         >
-          <SummaryBar todos={this.props.todos} />
+          <SummaryBar 
+            todos={this.props.todos}
+            tags={this.props.tags} />
         </Paper>
         <Paper
           zDepth={2}
           style={{ 'padding': 40, 'paddingTop': 20 }} 
         >
-          <TodoInputContainer />
+          <TodoInputContainer 
+            todos={this.props.todos} />
           { this.renderTodos() }
         </Paper>
       </div>
@@ -45,13 +50,16 @@ class HomePage extends Component {
 function mapStateToProps(state) {
   return { 
       isLoading: state.todos.isLoading,
-      todos: state.todos.todos
+      todos: state.todos.todos,
+      isTagsLoading: state.tags.isLoading,
+      tags: state.tags.tags
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    getTodos: () => dispatch(getTodos())
+    getTodos: () => dispatch(getTodos()),
+    getTags: () => dispatch(getTags())
   };
 }
 
