@@ -8,6 +8,9 @@ var todoModel = new Schema({
     todo: {
         type: String
     },
+    priority: {
+        type: String
+    },
     tags: {
         type: [String]
     },

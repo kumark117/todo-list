@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Card } from 'material-ui/Card';
 import TextInput from '../components/TextInput';
-import ChipInput from '../components/ChipInput';
+import ChipInputTags from '../components/ChipInputTags';
 import AddButton from '../components/AddButton';
+import SelectPriority from '../components/SelectPriority';
 import { connect } from 'react-redux';
 import { postTodo } from '../actions/postTodo_actions';
 import { getTodos } from '../actions/getTodos_actions';
@@ -13,6 +14,7 @@ class TodoInputContainer extends Component {
         this.state = {
             id: undefined,
             todo: "",
+            priority: "Medium",
             tags: []
         }
     };
@@ -32,6 +34,7 @@ class TodoInputContainer extends Component {
         .then(() => this.props.getTodos());
         this.setState({
             todo: "",
+            priority: "medium",
             tags: []
         });
     }
@@ -50,19 +53,30 @@ class TodoInputContainer extends Component {
         });
     }
 
+    onChangePriority = (event) => {
+        this.setState({
+            priority: event.target.value
+        });
+    }
+
     render() {
         return (
             <div style={{ 'marginBottom': 50 }}>
                 <TextInput 
                     onChange={this.onChangeText}
                     value={this.state.todo} />
-                <ChipInput
-                    value={this.state.tags}
-                    onAddChip={this.onAddChip}
-                    onRemoveChip={this.onRemoveChip} />
-                <AddButton
-                    onClick={this.onClickButton}
-                    disabled={this.state.todo.length > 0 ? false : true} />
+                <div style={{ 'display': 'flex', 'alignItems': 'center' }}>
+                    <ChipInputTags
+                        value={this.state.tags}
+                        onAddChip={this.onAddChip}
+                        onRemoveChip={this.onRemoveChip} />
+                    <SelectPriority 
+                        value={this.state.priority}
+                        onChangePriority={this.onChangePriority} />
+                </div>
+                    <AddButton
+                        onClick={this.onClickButton}
+                        disabled={this.state.todo.length > 0 ? false : true} />
             </div>
         )
     }
