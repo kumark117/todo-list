@@ -22,7 +22,7 @@ export const getTodosError = (error) => {
     return {
         type: GET_TODOS_ERROR,
         payload: error
-    }
+    };
 }
 
 export function getTodos() {
@@ -34,8 +34,8 @@ export function getTodos() {
                 dispatch(getTodosSuccess(response))
             }
         })
-        .catch(error => {
+        error => {
             dispatch(getTodosError(error))
-        })     
+        };     
     }
 }

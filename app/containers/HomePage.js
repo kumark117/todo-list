@@ -17,9 +17,11 @@ class HomePage extends Component {
 
   renderTodos = () => {
     if (!this.props.todos.length) {
-      return <CircularProgress size={40} thickness={5} />
+      return <CircularProgress 
+              size={40} thickness={5} />
     } else {
-      return <TodoList todos={this.props.todos} />
+      return <TodoList 
+              todos={this.props.todos} />
     }
   }
 

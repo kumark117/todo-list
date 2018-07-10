@@ -34,8 +34,8 @@ export function getTags() {
                 dispatch(getTagsSuccess(response))
             }
         })
-        .catch(error => {
+        error => {
             dispatch(getTagsError(error))
-        })     
+        };    
     }
 }

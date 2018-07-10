@@ -35,8 +35,8 @@ export function postTodo(values) {
                 dispatch(postTodoSuccess(response))
             }
         })
-        .catch(error => {
+        error => {
             dispatch(postTodoError(error))
-        })
+        };
     }
 }
