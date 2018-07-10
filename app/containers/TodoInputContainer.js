@@ -14,7 +14,7 @@ class TodoInputContainer extends Component {
         this.state = {
             id: undefined,
             todo: "",
-            priority: "Medium",
+            priority: "medium",
             tags: []
         }
     };
@@ -61,22 +61,24 @@ class TodoInputContainer extends Component {
 
     render() {
         return (
-            <div style={{ 'marginBottom': 50 }}>
-                <TextInput 
+            <div style={{ 'width': '60%', 'marginBottom': 50 }}>
+                <div style={{ 'width': '100%', 'display': 'flex', 'alignItems': 'center' }} >
+                <TextInput
                     onChange={this.onChangeText}
                     value={this.state.todo} />
+                <SelectPriority 
+                    value={this.state.priority}
+                    onChangePriority={this.onChangePriority} />
+                </div>
                 <div style={{ 'display': 'flex', 'alignItems': 'center' }}>
                     <ChipInputTags
                         value={this.state.tags}
                         onAddChip={this.onAddChip}
                         onRemoveChip={this.onRemoveChip} />
-                    <SelectPriority 
-                        value={this.state.priority}
-                        onChangePriority={this.onChangePriority} />
-                </div>
                     <AddButton
                         onClick={this.onClickButton}
                         disabled={this.state.todo.length > 0 ? false : true} />
+                </div>
             </div>
         )
     }

@@ -15,7 +15,6 @@ export default class SelectPriority extends Component {
                 <Select
                     value={this.props.value}
                     onChange={this.props.onChangePriority}
-                    input={<Input id="select-multiple" />}
                     autoWidth >
                     <MenuItem value={"high"}>High</MenuItem>
                     <MenuItem value={"medium"}>Medium</MenuItem>

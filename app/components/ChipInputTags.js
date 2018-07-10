@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import ChipInput from 'material-ui-chip-input';
 
-const ChipTags = (props) => {
+const ChipInputTags = (props) => {
     return (
         <ChipInput
-            style = {{ 'width': '100%', 'marginBottom': 20 }}
+            style = {{ 'marginRight': 15, 'marginBottom': 12.5 }}
             fullWidth = {true}
             floatingLabelText = "Tags"
             value={props.value}
@@ -15,4 +16,11 @@ const ChipTags = (props) => {
     );
 }
 
-export default ChipTags;
+ChipInputTags.propTypes = {
+    floatingLabelText: PropTypes.string,
+    value: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    onRequestAdd: PropTypes.func.isRequired,
+    onRequestDelete: PropTypes.func.isRequired
+}
+
+export default ChipInputTags;

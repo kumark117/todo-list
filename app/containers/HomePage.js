@@ -38,7 +38,7 @@ class HomePage extends Component {
         </Paper>
         <Paper
           zDepth={2}
-          style={{ 'padding': 40, 'paddingTop': 20 }} 
+          style={{ 'width': '60%', 'padding': 40, 'paddingTop': 20 }} 
         >
           <TodoInputContainer 
             todos={this.props.todos} />
