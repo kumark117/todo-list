@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { List } from 'material-ui/List';
-import TodoRow from './TodoRow';
+import TodoRowContainer from '../containers/TodoRowContainer';
 
 export default class TodoList extends Component {
     render() {
@@ -9,12 +9,11 @@ export default class TodoList extends Component {
                  {
                     this.props.todos.map((todo, key) => {
                         return (
-                            <TodoRow 
+                            <TodoRowContainer
                                 key={todo.id}
                                 todo={todo.todo}
                                 tags={todo.tags}
-                                complete={todo.complete}
-                            />
+                                complete={todo.complete} />
                         )
                     })
                 }

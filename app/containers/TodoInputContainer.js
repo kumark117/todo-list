@@ -12,7 +12,6 @@ class TodoInputContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: undefined,
             todo: "",
             priority: "medium",
             tags: []
@@ -27,8 +26,7 @@ class TodoInputContainer extends Component {
 
     onClickButton = () => {
         let valuesToPost = {
-            ...this.state,
-            id: this.props.todos.length
+            ...this.state
         };
         this.props.postTodo(valuesToPost)
         .then(() => this.props.getTodos());
@@ -63,12 +61,12 @@ class TodoInputContainer extends Component {
         return (
             <div style={{ 'width': '60%', 'marginBottom': 50 }}>
                 <div style={{ 'width': '100%', 'display': 'flex', 'alignItems': 'center' }} >
-                <TextInput
-                    onChange={this.onChangeText}
-                    value={this.state.todo} />
-                <SelectPriority 
-                    value={this.state.priority}
-                    onChangePriority={this.onChangePriority} />
+                    <TextInput
+                        onChange={this.onChangeText}
+                        value={this.state.todo} />
+                    <SelectPriority 
+                        value={this.state.priority}
+                        onChangePriority={this.onChangePriority} />
                 </div>
                 <div style={{ 'display': 'flex', 'alignItems': 'center' }}>
                     <ChipInputTags

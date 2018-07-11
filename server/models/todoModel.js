@@ -2,9 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 var todoModel = new Schema({
-    id: {
-        type: Number
-    },
     todo: {
         type: String
     },

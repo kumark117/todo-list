@@ -15,14 +15,25 @@ class HomePage extends Component {
     this.props.getTags();
   }
 
-  renderTodos = () => {
+  renderTodoList = () => {
     if (!this.props.todos.length) {
       return <CircularProgress 
               size={40} thickness={5} />
     } else {
       return <TodoList 
               todos={this.props.todos} />
-    }
+    };
+  }
+
+  renderSummaryBar = () => {
+    if (!this.props.tags || !this.props.todos.length) {
+      return <CircularProgress 
+              size={40} thickness={5} />
+    } else {
+      return <SummaryBar
+              todos={this.props.todos}
+              tags={this.props.tags} />
+    };
   }
 
   render() {
@@ -32,9 +43,7 @@ class HomePage extends Component {
           zDepth={2}
           style={{'padding': 40, 'paddingTop': 20, 'marginRight': 25 }}
         >
-          <SummaryBar 
-            todos={this.props.todos}
-            tags={this.props.tags} />
+          { this.renderSummaryBar() }
         </Paper>
         <Paper
           zDepth={2}
@@ -42,7 +51,7 @@ class HomePage extends Component {
         >
           <TodoInputContainer 
             todos={this.props.todos} />
-          { this.renderTodos() }
+          { this.renderTodoList() }
         </Paper>
       </div>
     )
@@ -51,9 +60,7 @@ class HomePage extends Component {
 
 function mapStateToProps(state) {
   return { 
-      isLoading: state.todos.isLoading,
       todos: state.todos.todos,
-      isTagsLoading: state.tags.isLoading,
       tags: state.tags.tags
   };
 }

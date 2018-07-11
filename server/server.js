@@ -28,7 +28,6 @@ app.use('/api', todoRouter);
 todoRouter.route('/todos')
      .post((req, res) => {
         var todo = new Todo(req.body);
-        console.log(todo)
         todo.save((err, todo) => {
             if (err) {
                 res.send(err);
@@ -46,6 +45,18 @@ todoRouter.route('/todos')
             }
         });
     });
+
+todoRouter.route('/todos/:id')
+    .delete((req, res) => {
+        let query = {_id: req.body._id}  // TODO
+        Todo.deleteOne(query, (err, results) => {  // TODO
+            if (err) {
+                console.log(err)
+            } else {
+                console.log('successfully deleted')
+            }
+        });
+    });    
 
 todoRouter.route('/tags')
     .get((req, res) => {

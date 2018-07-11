@@ -9,17 +9,14 @@ import CircularProgress from 'material-ui/CircularProgress';
 export default class SummaryBar extends Component {
 
   render() {
-    if (!this.props.todos || !this.props.tags) {
-      return <CircularProgress size={40} thickness={5} />
-    } else {
       return (
         <div>
           <p>{this.props.todos.length} items remaining</p>
           <p>Filter by</p>
-          <TagsList tags={this.props.tags} />
+          <TagsList 
+            tags={this.props.tags} />
         </div>
       )
-    }
   }
 }
 
