@@ -25,6 +25,7 @@ export default class TodoRow extends Component {
         primaryText={todo}
         leftCheckbox={
           <Checkbox
+            onCheck={this.props.onClickComplete}
             checked={complete ? true : false}
           />
         }

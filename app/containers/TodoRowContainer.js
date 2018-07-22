@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getTodos } from '../actions/getTodos_actions';
 import { getTags } from '../actions/getTags_actions';
+import { completeTodo } from '../actions/completeTodo_actions';
 import { removeTodo } from '../actions/removeTodo_actions';
 import TodoRow from '../components/TodoRow';
 
 class TodoRowContainer extends Component {
+
+  onClickComplete = () => {
+    this.props.completeTodo(this.props.id)
+    .then(() => this.props.getTodos());
+  };
 
   onClickDelete = () => {
     this.props.removeTodo(this.props.id)
@@ -19,8 +25,9 @@ class TodoRowContainer extends Component {
         todo={this.props.todo}
         tags={this.props.tags}
         complete={this.props.complete}
+        onClickComplete={this.onClickComplete}
         onClickDelete={this.onClickDelete} />
-    )
+    );
   }
 }
 
@@ -35,6 +42,7 @@ function mapDispatchToProps(dispatch) {
   return {
     getTodos: () => dispatch(getTodos()),
     getTags: () => dispatch(getTags()),
+    completeTodo: (todoId) => dispatch(completeTodo(todoId)),
     removeTodo: (todoId) => dispatch(removeTodo(todoId))
   };
 }

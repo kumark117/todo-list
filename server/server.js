@@ -56,7 +56,18 @@ todoRouter.route('/todos/:_id')
                 res.json({ success: req.params._id })
             }
         });
-    });    
+    })
+    .put((req, res) => {
+        let query = {_id: req.params._id}
+        let values = {$set: {complete: true}}
+        Todo.updateOne(query, values, (err, response) => {
+            if (err) {
+                console.log(err)
+            } else {
+                res.json({ success: req.params._id })
+            }
+        })
+    });   
 
 todoRouter.route('/tags')
     .get((req, res) => {
