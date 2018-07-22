@@ -7,7 +7,7 @@ const ChipInputTags = (props) => {
     return (
         <ChipInput
             style = {{ 'marginRight': 15, 'marginBottom': 12.5 }}
-            fullWidth = {true}
+            fullWidth = {false}
             floatingLabelText = "Tags"
             value={props.value}
             onRequestAdd={(chip) => props.onAddChip(chip)}

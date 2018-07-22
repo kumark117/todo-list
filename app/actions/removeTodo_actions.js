@@ -26,12 +26,11 @@ export const removeTodoError = (error) => {
 }
 
 export function removeTodo(values) {
-    console.log(values)
     return (dispatch) => {
         dispatch(removeTodoBegin())
-        return axios.post('http://localhost:8000/api/todos', values)
+        return axios.delete(`http://localhost:8000/api/todos/${values}`)
         .then(response => {
-            if (response.status === 201) {
+            if (response.status === 200) {
                 dispatch(removeTodoSuccess(response))
             }
         })

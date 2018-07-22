@@ -16,16 +16,11 @@ export default class TodoRow extends Component {
     }
   };
 
-  onClickDelete = () => {
-    console.log('testing delete button')
-    this.props.removeTodo()
-  };
-
   render() {
     const { todo, tags, complete } = this.props;
 
     return (
-      <div>
+      <div style={{ 'width': '80%' }}>
       <ListItem
         primaryText={todo}
         leftCheckbox={
@@ -35,7 +30,7 @@ export default class TodoRow extends Component {
         }
         rightIconButton={
           <IconButton
-            onClick={this.onClickDelete}>
+            onClick={this.props.onClickDelete}>
             <DeleteIcon />
           </IconButton>
         }

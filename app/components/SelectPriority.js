@@ -15,7 +15,7 @@ export default class SelectPriority extends Component {
                 <Select
                     value={this.props.value}
                     onChange={this.props.onChangePriority}
-                    autoWidth >
+                    >
                     <MenuItem value={"high"}>High</MenuItem>
                     <MenuItem value={"medium"}>Medium</MenuItem>
                     <MenuItem value={"low"}>Low</MenuItem>

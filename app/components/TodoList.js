@@ -10,11 +10,11 @@ export default class TodoList extends Component {
                     this.props.todos.map((todo, key) => {
                         return (
                             <TodoRowContainer
-                                key={todo.id}
+                                id={todo._id}
                                 todo={todo.todo}
                                 tags={todo.tags}
                                 complete={todo.complete} />
-                        )
+                        );
                     })
                 }
             </div>
