@@ -5,12 +5,18 @@ import { getTags } from '../actions/getTags_actions';
 import { completeTodo } from '../actions/completeTodo_actions';
 import { removeTodo } from '../actions/removeTodo_actions';
 import TodoRow from '../components/TodoRow';
+import { recoverTodo } from '../actions/recoverTodo_actions';
 
 class TodoRowContainer extends Component {
 
   onClickComplete = () => {
-    this.props.completeTodo(this.props.id)
-    .then(() => this.props.getTodos());
+    if (this.props.complete) {
+      this.props.recoverTodo(this.props.id)
+      .then(() => this.props.getTodos());
+    } else {
+      this.props.completeTodo(this.props.id)
+      .then(() => this.props.getTodos());
+    } 
   };
 
   onClickDelete = () => {
@@ -43,6 +49,7 @@ function mapDispatchToProps(dispatch) {
     getTodos: () => dispatch(getTodos()),
     getTags: () => dispatch(getTags()),
     completeTodo: (todoId) => dispatch(completeTodo(todoId)),
+    recoverTodo: (todoId) => dispatch(recoverTodo(todoId)),
     removeTodo: (todoId) => dispatch(removeTodo(todoId))
   };
 }

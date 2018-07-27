@@ -16,7 +16,7 @@ export default class SummaryBar extends Component {
           <TagsList 
             tags={this.props.tags} />
         </div>
-      )
+      );
   }
 }
 

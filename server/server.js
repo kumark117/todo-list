@@ -46,7 +46,7 @@ todoRouter.route('/todos')
         });
     });
 
-todoRouter.route('/todos/:_id')
+todoRouter.route('/todos/:_id/')
     .delete((req, res) => {
         let query = {_id: req.params._id} 
         Todo.deleteOne(query, (err, response) => {
@@ -57,17 +57,32 @@ todoRouter.route('/todos/:_id')
             }
         });
     })
+
+todoRouter.route('/todos/complete/:_id')
     .put((req, res) => {
         let query = {_id: req.params._id}
-        let values = {$set: {complete: true}}
+        let values= {$set: {complete: true}}
         Todo.updateOne(query, values, (err, response) => {
             if (err) {
                 console.log(err)
             } else {
                 res.json({ success: req.params._id })
             }
-        })
-    });   
+        });
+    });
+
+todoRouter.route('/todos/recover/:_id')
+    .put((req, res) => {
+        let query = {_id: req.params._id}
+        let values = {$set: {complete: false}}
+        Todo.updateOne(query, values, (err, response) => {
+            if (err) {
+                console.log(err)
+            } else {
+                res.json({ success: req.params._id })
+            }
+        });
+    });
 
 todoRouter.route('/tags')
     .get((req, res) => {

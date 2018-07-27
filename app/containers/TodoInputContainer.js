@@ -78,7 +78,7 @@ class TodoInputContainer extends Component {
                         disabled={this.state.todo.length > 0 ? false : true} />
                 </div>
             </div>
-        )
+        );
     }
 }
 

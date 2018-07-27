@@ -25,10 +25,10 @@ export const completeTodoError = (error) => {
     }
 }
 
-export function completeTodo(values) {
+export function completeTodo(id, complete) {
     return (dispatch) => {
         dispatch(completeTodoBegin())
-        return axios.put(`http://localhost:8000/api/todos/${values}`)
+        return axios.put(`http://localhost:8000/api/todos/complete/${id}`)
         .then(response => {
             if (response.status === 200) {
                 dispatch(completeTodoSuccess(response))
