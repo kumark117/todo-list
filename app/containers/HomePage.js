@@ -47,20 +47,20 @@ class HomePage extends Component {
         </Paper>
         <Paper
           zDepth={2}
-          style={{ 'width': '60%', 'padding': 40, 'paddingTop': 20 }} 
-        >
+          style={{ 'width': '60%', 'padding': 40, 'paddingTop': 20 }} >
           <TodoInputContainer 
             todos={this.props.todos} />
           { this.renderTodoList() }
         </Paper>
       </div>
-    )
+    );
   }
 }
 
 function mapStateToProps(state) {
   return { 
       todos: state.todos.todos,
+      isLoading: state.todos.isLoading,
       tags: state.tags.tags
   };
 }

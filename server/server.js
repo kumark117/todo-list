@@ -56,7 +56,7 @@ todoRouter.route('/todos/:_id/')
                 res.json({ success: req.params._id })
             }
         });
-    })
+    });
 
 todoRouter.route('/todos/complete/:_id')
     .put((req, res) => {
