@@ -5,9 +5,9 @@ import TodoInputContainer from './TodoInputContainer';
 import { connect } from 'react-redux';
 import { getTodos } from '../actions/getTodos_actions';
 import { getTags } from '../actions/getTags_actions';
-import TodoList from '../components/TodoList';
+import TodoList from '../components/TodoList.jsx';
 import CircularProgress from 'material-ui/CircularProgress';
-import SummaryBar from './SummaryBar';
+import SummaryBar from './SummaryBar.jsx';
 
 class HomePage extends Component {
   componentDidMount() {
@@ -26,7 +26,7 @@ class HomePage extends Component {
   }
 
   renderSummaryBar = () => {
-    if (!this.props.tags || !this.props.todos.length) {
+/*     if (!this.props.tags || !this.props.todos.length) {
       return <CircularProgress 
               size={40} thickness={5} />
     } else {
@@ -34,6 +34,8 @@ class HomePage extends Component {
               todos={this.props.todos}
               tags={this.props.tags} />
     };
+  } */
+    return <CircularProgress size={40} thickness={5} />
   }
 
   render() {
@@ -73,5 +75,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
-
-  

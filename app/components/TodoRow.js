@@ -8,11 +8,9 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Paper from 'material-ui/Paper';
 import MoreIcon from '@material-ui/icons/More';
 
-export default class TodoRow extends Component {
-
+const TodoRow = function() {
   render() {
     const { todo, tags, complete } = this.props;
-
     return (
       <div style={{ 'width': '80%' }}>
       <ListItem

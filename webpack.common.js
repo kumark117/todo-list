@@ -4,7 +4,7 @@ const CleanWebPackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: './app/index.js',
+    main: './app/index.jsx',
   },
   output: {
     filename: 'bundle.js',
@@ -13,7 +13,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
@@ -27,13 +27,13 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
         include: /flexboxgrid/,
-      }
-    ]
+      },
+    ],
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: 'index.html'
+      template: 'index.html',
     }),
-    new CleanWebPackPlugin(['dist'])
-  ]
-}
+    new CleanWebPackPlugin(['dist']),
+  ],
+};

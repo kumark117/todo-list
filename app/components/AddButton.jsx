@@ -4,23 +4,23 @@ import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 
 const AddButton = (props) => {
-    return (
-        <Button
-            style={{ 'marginTop': 20 }} 
-            color="primary"
-            variant="fab"
-            onClick={props.onClick}
-            disabled={props.disabled} >
-            <AddIcon />
-        </Button>
-    )
-}
+  const { onClick, disabled } = props;
+  return (
+    <Button
+      style={{ marginTop: 20 }}
+      color="primary"
+      variant="fab"
+      onClick={onClick}
+      disabled={disabled}
+    >
+      <AddIcon />
+    </Button>
+  );
+};
 
 AddButton.propTypes = {
-    color: PropTypes.string,
-    variant: PropTypes.string,
-    onClick: PropTypes.func.isRequired,
-    disabled: PropTypes.bool.isRequired
-}
+  onClick: PropTypes.func.isRequired,
+  disabled: PropTypes.bool.isRequired,
+};
 
 export default AddButton;

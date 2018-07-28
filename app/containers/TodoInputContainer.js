@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Card } from 'material-ui/Card';
-import TextInput from '../components/TextInput';
+import TextInput from '../components/TextInput.jsx';
 import ChipInputTags from '../components/ChipInputTags';
-import AddButton from '../components/AddButton';
+import AddButton from '../components/AddButton.jsx';
 import SelectPriority from '../components/SelectPriority';
 import { connect } from 'react-redux';
 import { postTodo } from '../actions/postTodo_actions';
