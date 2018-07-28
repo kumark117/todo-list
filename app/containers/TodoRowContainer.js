@@ -4,7 +4,7 @@ import { getTodos } from '../actions/getTodos_actions';
 import { getTags } from '../actions/getTags_actions';
 import { completeTodo } from '../actions/completeTodo_actions';
 import { removeTodo } from '../actions/removeTodo_actions';
-import TodoRow from '../components/TodoRow';
+import TodoRow from '../components/TodoRow.jsx';
 import { recoverTodo } from '../actions/recoverTodo_actions';
 
 class TodoRowContainer extends Component {

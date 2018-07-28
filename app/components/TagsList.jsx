@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ChipFilters from './ChipFilters.jsx';
-import { Chip } from 'material-ui';
 
-const TagsList = () => {
-  const { tags } = this.props;
+export default function TagsList({ tags }) {
   return (
     <div>
       {
-        this.props.tags.map((tag, key) => {
+        tags.map((tag) => {
           return (
             <ChipFilters
               label={tag}
@@ -18,6 +16,4 @@ const TagsList = () => {
       }
     </div>
   );
-};
-
-export default TagsList;
+}

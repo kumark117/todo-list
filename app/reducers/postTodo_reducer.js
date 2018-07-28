@@ -13,7 +13,7 @@ export default function PostTodoReducer(state = initialState, action) {
   switch (action.type) {
     case POST_TODO_BEGIN:
       return {
-        ...state, 
+        ...state,
         isLoading: true,
       };
     case POST_TODO_SUCCESS:
@@ -26,7 +26,7 @@ export default function PostTodoReducer(state = initialState, action) {
         ...state,
         isLoading: false,
         error: action.error,
-      } ; 
+      };
     default:
       return state;
   }

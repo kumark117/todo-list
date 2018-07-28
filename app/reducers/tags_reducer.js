@@ -14,7 +14,7 @@ export default function tagsReducer(state = initialState, action) {
   switch (action.type) {
     case GET_TAGS_BEGIN:
       return {
-        ...state, 
+        ...state,
         isLoading: true,
       };
     case GET_TAGS_SUCCESS:
