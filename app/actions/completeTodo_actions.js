@@ -9,14 +9,14 @@ export const completeTodoBegin = () => ({
   type: COMPLETE_TODO_BEGIN,
 });
 
-export const completeTodoSuccess = (response) => ({
-    type: COMPLETE_TODO_SUCCESS,
-    payload: response,
+export const completeTodoSuccess = response => ({
+  type: COMPLETE_TODO_SUCCESS,
+  payload: response,
 });
 
-export const completeTodoError = (error) => ({
-        type: COMPLETE_TODO_ERROR,
-        payload: error
+export const completeTodoError = error => ({
+  type: COMPLETE_TODO_ERROR,
+  payload: error,
 });
 
 export function completeTodo(id) {
@@ -29,7 +29,6 @@ export function completeTodo(id) {
         }
       });
     (error) => {
-      dispatch(completeTodoError(error));
     };
   };
 }

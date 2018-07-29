@@ -3,14 +3,9 @@ import {
   GET_TAGS_SUCCESS,
   GET_TAGS_ERROR,
 } from '../actions/types';
+import initialState from './InitialState';
 
-const initialState = {
-  isLoading: false,
-  error: null,
-  tags: [],
-};
-
-export default function tagsReducer(state = initialState, action) {
+export default function tagsReducer(state = initialState.tags, action) {
   switch (action.type) {
     case GET_TAGS_BEGIN:
       return {

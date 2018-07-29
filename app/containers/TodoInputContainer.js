@@ -65,7 +65,7 @@ class TodoInputContainer extends Component {
                         onChange={this.onChangeText}
                         value={this.state.todo} />
                 </div>
-                <div style={{ 'display': 'flex', 'width': '80%', 'alignItems': 'center', 'justify-content': 'space-between' }}>
+                <div style={{ 'display': 'flex', 'width': '80%', 'alignItems': 'center', 'justifyContent': 'space-around' }}>
                     <ChipInputTags
                         value={this.state.tags}
                         onAddChip={this.onAddChip}

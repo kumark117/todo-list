@@ -26,16 +26,12 @@ class HomePage extends Component {
   }
 
   renderSummaryBar = () => {
-/*     if (!this.props.tags || !this.props.todos.length) {
+    if (!this.props.tags.length || !this.props.todos.length) {
       return <CircularProgress 
-              size={40} thickness={5} />
+                size={40} thickness={5} />
     } else {
-      return <SummaryBar
-              todos={this.props.todos}
-              tags={this.props.tags} />
+      return <SummaryBar />
     };
-  } */
-    return <CircularProgress size={40} thickness={5} />
   }
 
   render() {
@@ -62,15 +58,14 @@ class HomePage extends Component {
 function mapStateToProps(state) {
   return { 
       todos: state.todos.todos,
-      isLoading: state.todos.isLoading,
-      tags: state.tags.tags
+      tags: state.tags.tags,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     getTodos: () => dispatch(getTodos()),
-    getTags: () => dispatch(getTags())
+    getTags: () => dispatch(getTags()),
   };
 }
 

@@ -1,44 +1,42 @@
 import {
-  GET_TODOS_BEGIN,
-  GET_TODOS_SUCCESS,
-  GET_TODOS_ERROR,
-  REMOVE_TODO_BEGIN,
-  REMOVE_TODO_SUCCESS,
-  REMOVE_TODO_ERROR,
-  SORT_TODOS,
+  COMPLETE_TODO_BEGIN,
+  COMPLETE_TODO_SUCCESS,
+  COMPLETE_TODO_ERROR,
+  RECOVER_TODO_BEGIN,
+  RECOVER_TODO_SUCCESS,
+  RECOVER_TODO_ERROR,
 } from '../actions/types';
 import initialState from './InitialState';
 
-export default function todosReducer(state = initialState.todos, action) {
+export default function modifyTodoReducer(state = initialState.modifyTodo, action) {
   switch (action.type) {
-    case GET_TODOS_BEGIN:
+    case COMPLETE_TODO_BEGIN:
       return {
         ...state,
         isLoading: true,
       };
-    case GET_TODOS_SUCCESS:
+    case COMPLETE_TODO_SUCCESS:
       return {
         ...state,
         isLoading: false,
-        todos: action.payload,
       };
-    case GET_TODOS_ERROR:
+    case COMPLETE_TODO_ERROR:
       return {
         ...state,
         isLoading: false,
         error: action.error,
       };
-    case REMOVE_TODO_BEGIN:
+    case RECOVER_TODO_BEGIN:
       return {
         ...state,
         isLoading: true,
       };
-    case REMOVE_TODO_SUCCESS:
+    case RECOVER_TODO_SUCCESS:
       return {
         ...state,
         isLoading: false,
       };
-    case REMOVE_TODO_ERROR:
+    case RECOVER_TODO_ERROR:
       return {
         ...state,
         isLoading: false,

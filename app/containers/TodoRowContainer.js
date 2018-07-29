@@ -32,7 +32,8 @@ class TodoRowContainer extends Component {
         tags={this.props.tags}
         complete={this.props.complete}
         onClickComplete={this.onClickComplete}
-        onClickDelete={this.onClickDelete} />
+        onClickDelete={this.onClickDelete} 
+      />
     );
   }
 }
@@ -40,7 +41,7 @@ class TodoRowContainer extends Component {
 function mapStateToProps(state) {
   return { 
       todos: state.todos.todos,
-      tags: state.todos.tags
+      tags: state.todos.tags,
   };
 }
 
@@ -50,7 +51,7 @@ function mapDispatchToProps(dispatch) {
     getTags: () => dispatch(getTags()),
     completeTodo: (todoId) => dispatch(completeTodo(todoId)),
     recoverTodo: (todoId) => dispatch(recoverTodo(todoId)),
-    removeTodo: (todoId) => dispatch(removeTodo(todoId))
+    removeTodo: (todoId) => dispatch(removeTodo(todoId)),
   };
 }
 

@@ -4,7 +4,7 @@ import TextField from 'material-ui/TextField';
 import ChipInput from 'material-ui-chip-input';
 
 export default function ChipInputTags(props) {
-  const { value, onRequestAdd, onRequestDelete } = props;
+  const { value, onAddChip, onRemoveChip } = props;
   return (
     <ChipInput
       style={{ marginRight: 15, marginBottom: 12.5 }}
@@ -19,6 +19,6 @@ export default function ChipInputTags(props) {
 
 ChipInputTags.propTypes = {
   value: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  onRequestAdd: PropTypes.func.isRequired,
-  onRequestDelete: PropTypes.func.isRequired,
+  onAddChip: PropTypes.func.isRequired,
+  onRemoveChip: PropTypes.func.isRequired,
 };

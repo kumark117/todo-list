@@ -7,13 +7,14 @@ import InputLabel from '@material-ui/core/InputLabel';
 export default function SelectPriority(props) {
   const { value, onChangePriority } = props;
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
       <InputLabel style={{ fontSize: 12 }}>
           Priority
       </InputLabel>
       <Select
         value={value}
         onChange={onChangePriority}
+        autoWidth={false}
       >
         <MenuItem value="high">
            High

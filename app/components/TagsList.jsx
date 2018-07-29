@@ -5,14 +5,12 @@ export default function TagsList({ tags }) {
   return (
     <div>
       {
-        tags.map((tag) => {
-          return (
-            <ChipFilters
-              label={tag}
-              key={tag}
-            />
-          );
-        })
+        tags.map(tag => (
+          <ChipFilters
+            label={tag}
+            key={tag}
+          />
+        ))
       }
     </div>
   );

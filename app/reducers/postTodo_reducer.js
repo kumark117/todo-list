@@ -3,13 +3,9 @@ import {
   POST_TODO_SUCCESS,
   POST_TODO_ERROR,
 } from '../actions/types';
+import initialState from './InitialState';
 
-const initialState = {
-  isLoading: false,
-  error: null,
-};
-
-export default function PostTodoReducer(state = initialState, action) {
+export default function postTodoReducer(state = initialState.postTodo, action) {
   switch (action.type) {
     case POST_TODO_BEGIN:
       return {
