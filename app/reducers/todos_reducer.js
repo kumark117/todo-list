@@ -44,6 +44,11 @@ export default function todosReducer(state = initialState.todos, action) {
         isLoading: false,
         error: action.error,
       };
+    case SORT_TODOS:
+      return {
+        ...state,
+        todos: action.payload,
+      };
     default:
       return state;
   }

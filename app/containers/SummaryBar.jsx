@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { sortTodos } from '../actions/sortTodos_actions';
 import Button from '@material-ui/core/Button';
 import TagsList from '../components/TagsList.jsx';
 import PriorityFilters from '../components/PriorityFilters.jsx';
@@ -9,7 +10,8 @@ import IconButton from '@material-ui/core/IconButton';
 class SummaryBar extends Component {
 
   onSortTodos = () => {
-    console.log('being sorted')
+    const sortedTodos = [...this.props.todos].sort((a, b) => a.complete - b.complete);
+    this.props.sortTodos(sortedTodos);
   }
 
   render() {
@@ -26,10 +28,13 @@ class SummaryBar extends Component {
         <p>
           Filter by
         </p>
-        <IconButton 
-            onClick={this.onSortTodos}>
-            <FilterListIcon />
-        </IconButton>
+        <div style={{ 'display': 'flex', 'alignItems': 'flex-end' }}>
+            <IconButton 
+                onClick={this.onSortTodos}>
+                <FilterListIcon />
+                <p>complete</p>
+            </IconButton>
+        </div>
         <PriorityFilters />
         <TagsList
           tags={this.props.tags}
@@ -46,10 +51,10 @@ function mapStateToProps(state) {
     };
   }
 
-/* function mapDispatchToProps(dispatch, values) { 
+function mapDispatchToProps(dispatch) { 
     return {
-        sortTodos: (values) => dispatch(sortTodos(values)),
+        sortTodos: (sortedTodos) => dispatch(sortTodos(sortedTodos)),
     };
-} */
+}
 
-export default connect(mapStateToProps, null)(SummaryBar);
+export default connect(mapStateToProps, mapDispatchToProps)(SummaryBar);

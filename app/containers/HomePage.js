@@ -20,6 +20,7 @@ class HomePage extends Component {
       return <CircularProgress 
               size={40} thickness={5} />
     } else {
+      console.log('todos at home', this.props.todos)
       return <TodoList 
               todos={this.props.todos} />
     };
@@ -36,7 +37,7 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div style={{ 'padding': 50, 'display': 'flex' }}>
+      <div style={{ 'padding': 40, 'display': 'flex' }}>
         <Paper
           zDepth={2}
           style={{'padding': 40, 'paddingTop': 20, 'marginRight': 25 }}
@@ -45,7 +46,7 @@ class HomePage extends Component {
         </Paper>
         <Paper
           zDepth={2}
-          style={{ 'width': '60%', 'padding': 40, 'paddingTop': 20 }} >
+          style={{ 'width': '70%', 'padding': 40, 'paddingTop': 20 }} >
           <TodoInputContainer 
             todos={this.props.todos} />
           { this.renderTodoList() }

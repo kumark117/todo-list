@@ -4,6 +4,8 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import { withStyles } from '@material-ui/core/styles';
 import red from '@material-ui/core/colors/red';
 import yellow from '@material-ui/core/colors/yellow';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
 
 const styles = {
   root: {
@@ -38,35 +40,30 @@ class PriorityFilters extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <RadioGroup
-          aria-label="Priority"
-          name="priorityRadios"
-          value={this.state.value}
-          onChange={this.onSelectPriority}
-        >
-          <Radio
-            checked={false}
-            value="high"
-            name="radio-button-high"
-            aria-label="HIGH"
-            classes={{
-              root: classes.root,
-              checked: classes.checked,
-            }}
-          />
-          <Radio
-            checked={false}
-            value="medium"
-            name="radio-button-medium"
-            aria-label="MEDIUM"
-          />
-          <Radio
-            checked={false}
-            value="low"
-            name="radio-button-low"
-            aria-label="LOW"
-          />
-        </RadioGroup>
+        <FormControl component="fieldset" className={classes.formControl}>
+          <RadioGroup
+            aria-label="Priority"
+            name="priorityRadios"
+            value={this.state.value}
+            onChange={this.onSelectPriority}
+          >
+            <FormControlLabel
+              value="high"
+              control={<Radio color="primary" />}
+              label="high"
+            />
+            <FormControlLabel
+              value="medium"
+              control={<Radio color="primary" />}
+              label="medium"
+            />
+            <FormControlLabel
+              value="low"
+              control={<Radio color="primary" />}
+              label="low"
+            />
+          </RadioGroup>
+        </FormControl>
       </div>
     );
   }
