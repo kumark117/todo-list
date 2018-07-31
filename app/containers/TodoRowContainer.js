@@ -13,9 +13,11 @@ class TodoRowContainer extends Component {
     if (this.props.complete) {
       this.props.recoverTodo(this.props.id)
       .then(() => this.props.getTodos());
+      /* .then(() => this.props.getTodoById(this.props.id)); */
     } else {
       this.props.completeTodo(this.props.id)
       .then(() => this.props.getTodos());
+      /* .then(() => this.props.getTodoById(this.props.id)); */
     } 
   };
 

@@ -1,3 +1,4 @@
+/* eslint-disable */
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
@@ -47,6 +48,16 @@ todoRouter.route('/todos')
     });
 
 todoRouter.route('/todos/:_id/')
+    .get((req, res) => {
+        let query = {_id: req.params._id}
+        Todo.findOne((err, todo) => {
+            if (err) {
+                console.log(err)
+            } else {
+                res.json(todo)
+            }
+        });
+    })
     .delete((req, res) => {
         let query = {_id: req.params._id} 
         Todo.deleteOne(query, (err, response) => {

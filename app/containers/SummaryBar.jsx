@@ -32,8 +32,8 @@ class SummaryBar extends Component {
             <IconButton 
                 onClick={this.onSortTodos}>
                 <FilterListIcon />
-                <p>complete</p>
             </IconButton>
+            <p>complete</p>
         </div>
         <PriorityFilters />
         <TagsList

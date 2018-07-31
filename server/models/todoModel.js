@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
-var todoModel = new Schema({
+const todoModel = new Schema({
     todo: {
         type: String
     },
