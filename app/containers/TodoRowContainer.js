@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getTodos } from '../actions/getTodos_actions';
+import { getTodosSorted } from '../actions/getTodosSorted_actions';
 import { getTags } from '../actions/getTags_actions';
 import { completeTodo } from '../actions/completeTodo_actions';
 import { removeTodo } from '../actions/removeTodo_actions';
@@ -23,7 +24,7 @@ class TodoRowContainer extends Component {
 
   onClickDelete = () => {
     this.props.removeTodo(this.props.id)
-    .then(() => this.props.getTodos());
+    .then(() => this.props.getTodosSorted());
   };
 
   render() {
@@ -49,7 +50,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getTodos: () => dispatch(getTodos()),
+    getTodos: () => dispatch(getTodosSorted()),
+    getTodosSorted: () => dispatch(getTodosSorted()),
     getTags: () => dispatch(getTags()),
     completeTodo: (todoId) => dispatch(completeTodo(todoId)),
     recoverTodo: (todoId) => dispatch(recoverTodo(todoId)),

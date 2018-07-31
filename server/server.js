@@ -27,7 +27,16 @@ const todoRouter = express.Router();
 app.use('/api', todoRouter);
 
 todoRouter.route('/todos')
-     .post((req, res) => {
+    .get((req, res) => {
+        Todo.find((err, todos) => {
+            if (err) { 
+                console.log(err) 
+            } else {
+                res.json(todos);
+            }
+        });
+    })
+    .post((req, res) => {
         let todo = new Todo(req.body);
         todo.save((err, todo) => {
             if (err) {
@@ -36,9 +45,12 @@ todoRouter.route('/todos')
                 res.status(201).send(todo);
             }
         });
-    })
+    });
+
+todoRouter.route('/todos/sorted')
     .get((req, res) => {
-        Todo.find((err, todos) => {
+        let mySort = { complete: 1 }
+        Todo.find({}, null, {sort: mySort}, (err, todos) => {
             if (err) { 
                 console.log(err) 
             } else {

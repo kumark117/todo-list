@@ -3,7 +3,7 @@ import { Card } from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
 import TodoInputContainer from './TodoInputContainer';
 import { connect } from 'react-redux';
-import { getTodos } from '../actions/getTodos_actions';
+import { getTodosSorted } from '../actions/getTodosSorted_actions';
 import { getTags } from '../actions/getTags_actions';
 import TodoList from '../components/TodoList.jsx';
 import CircularProgress from 'material-ui/CircularProgress';
@@ -11,7 +11,7 @@ import SummaryBar from './SummaryBar.jsx';
 
 class HomePage extends Component {
   componentDidMount() {
-    this.props.getTodos();
+    this.props.getTodosSorted();
     this.props.getTags();
   }
 
@@ -65,7 +65,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getTodos: () => dispatch(getTodos()),
+    getTodosSorted: () => dispatch(getTodosSorted()),
     getTags: () => dispatch(getTags()),
   };
 }
