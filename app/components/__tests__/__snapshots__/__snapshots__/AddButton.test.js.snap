@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddButton renders correctly 1`] = `
+<WithStyles(Button)
+  color="primary"
+  style={
+    Object {
+      "marginTop": 20,
+    }
+  }
+  variant="fab"
+>
+  <pure(Add) />
+</WithStyles(Button)>
+`;
