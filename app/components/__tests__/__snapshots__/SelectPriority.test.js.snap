@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectPriority renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "flexDirection": "column",
+    }
+  }
+>
+  <WithStyles(InputLabel)
+    style={
+      Object {
+        "fontSize": 12,
+      }
+    }
+  >
+    Priority
+  </WithStyles(InputLabel)>
+  <WithStyles(Select)
+    autoWidth={false}
+  >
+    <WithStyles(MenuItem)
+      value="high"
+    >
+      High
+    </WithStyles(MenuItem)>
+    <WithStyles(MenuItem)
+      value="medium"
+    >
+      Medium
+    </WithStyles(MenuItem)>
+    <WithStyles(MenuItem)
+      value="low"
+    >
+      Low
+    </WithStyles(MenuItem)>
+  </WithStyles(Select)>
+</div>
+`;

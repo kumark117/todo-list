@@ -1,15 +1,6 @@
 import axios from 'axios';
-import {
-  GET_TODO_ID_BEGIN,
-  GET_TODO_ID_SUCCESS,
-  GET_TODO_ID_ERROR,
-} from './types';
-
-export const getTodoByIdBegin = () => {
-  return {
-    type: GET_TODO_ID_BEGIN,
-  };
-};
+import { GET_TODO_ID_SUCCESS } from './types';
+import { getTodosBegin, getTodosError } from './getTodos_actions';
 
 export const getTodoByIdSuccess = (response) => {
   return {
@@ -18,16 +9,9 @@ export const getTodoByIdSuccess = (response) => {
   };
 };
 
-export const getTodoByIdError = (error) => {
-  return {
-    type: GET_TODO_ID_ERROR,
-    payload: error,
-  };
-};
-
 export function getTodos() {
   return (dispatch) => {
-    dispatch(getTodoByIdBegin());
+    dispatch(getTodosBegin());
     return axios.get(`http://localhost:8000/api/todos/${values}`)
       .then(response => {
         if (response.status === 200) {
@@ -35,7 +19,7 @@ export function getTodos() {
         }
       })
       (error) => {
-        dispatch(getTodoIdByError(error))
+        dispatch(getTodosError(error))
       };
   };
 }

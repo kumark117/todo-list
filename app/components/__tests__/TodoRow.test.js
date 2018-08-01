@@ -1,11 +1,11 @@
 /* eslint-disable */
 import React from 'react';
 import { shallow } from 'enzyme';
-import AddButton from '../../AddButton.jsx';
+import TodoRow from '../TodoRow.jsx';
 
-describe('AddButton', () => {
+describe('TodoRow', () => {
   it('renders correctly', () => {
-    const wrapper = shallow(<AddButton />);
+    const wrapper = shallow(<TodoRow />);
     expect(wrapper).toMatchSnapshot();
   });
 });
