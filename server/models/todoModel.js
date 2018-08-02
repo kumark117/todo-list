@@ -15,6 +15,10 @@ const todoModel = new Schema({
     complete: {
         type: Boolean,
         default: false
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now()
     }
 });
 
