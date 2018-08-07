@@ -1,5 +1,5 @@
 import React from 'react';
-import TodoRowContainer from '../containers/TodoRowContainer';
+import TodoRowContainer from '../containers/TodoRowContainer.jsx';
 
 export default function TodoList({ todos }) {
   return (

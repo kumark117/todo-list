@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card } from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
-import TodoInputContainer from './TodoInputContainer';
+import TodoInputContainer from './TodoInputContainer.jsx';
 import { connect } from 'react-redux';
 import { getTodosSorted } from '../actions/getTodosSorted_actions';
 import { getTags } from '../actions/getTags_actions';
@@ -20,7 +20,6 @@ class HomePage extends Component {
       return <CircularProgress 
               size={40} thickness={5} />
     } else {
-      console.log('todos at home', this.props.todos)
       return <TodoList 
               todos={this.props.todos} />
     };

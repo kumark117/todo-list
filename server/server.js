@@ -1,12 +1,10 @@
 /* eslint-disable */
 const express = require('express');
-const mongoose = require('mongoose');
 const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const db = mongoose.connect('mongodb://127.0.0.1:27017/Todos');
-const Todo = require('./models/todoModel');
 const port = process.env.PORT || 3000;
+const todo = require('./controllers/todo');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,7 +14,6 @@ app.use((req, res, next) => {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
     if (req.method === 'OPTIONS') {
-        console.log("options")
         return res.send(200);
     } else {
         return next();
@@ -27,97 +24,21 @@ const todoRouter = express.Router();
 app.use('/api', todoRouter);
 
 todoRouter.route('/todos')
-    .get((req, res) => {
-        Todo.find((err, todos) => {
-            if (err) { 
-                console.log(err) 
-            } else {
-                res.json(todos);
-            }
-        });
-    })
-    .post((req, res) => {
-        let todo = new Todo(req.body);
-        todo.save((err, todo) => {
-            if (err) {
-                res.send(err);
-            } else {
-                res.status(201).send(todo);
-            }
-        });
-    });
-
-todoRouter.route('/todos/sorted')
-    .get((req, res) => {
-        let mySort = { complete: 1 }
-        Todo.find({}, null, {sort: mySort}, (err, todos) => {
-            if (err) { 
-                console.log(err) 
-            } else {
-                res.json(todos);
-            }
-        });
-    });
+    .get(todo.getTodos)
+    .post(todo.addTodo);
 
 todoRouter.route('/todos/:_id/')
-    .get((req, res) => {
-        let query = {_id: req.params._id}
-        Todo.findOne((err, todo) => {
-            if (err) {
-                console.log(err)
-            } else {
-                res.json(todo)
-            }
-        });
-    })
-    .delete((req, res) => {
-        let query = {_id: req.params._id} 
-        Todo.deleteOne(query, (err, response) => {
-            if (err) {
-                console.log(err)
-            } else {
-                res.json({ success: req.params._id })
-            }
-        });
-    });
+    .get(todo.getTodoById)
+    .delete(todo.deleteTodoById);
 
-todoRouter.route('/todos/complete/:_id')
-    .put((req, res) => {
-        let query = {_id: req.params._id}
-        let values= {$set: {complete: true}}
-        Todo.updateOne(query, values, (err, response) => {
-            if (err) {
-                console.log(err)
-            } else {
-                res.json({ success: req.params._id })
-            }
-        });
-    });
+todoRouter.route('/todos/complete/:_id')    // put id before complete
+    .put(todo.completeTodo);
 
-todoRouter.route('/todos/recover/:_id')
-    .put((req, res) => {
-        let query = {_id: req.params._id}
-        let values = {$set: {complete: false}}
-        Todo.updateOne(query, values, (err, response) => {
-            if (err) {
-                console.log(err)
-            } else {
-                res.json({ success: req.params._id })
-            }
-        });
-    });
+todoRouter.route('/todos/recover/:_id')     // put id before recover
+    .put(todo.recoverTodo);
 
 todoRouter.route('/tags')
-    .get((req, res) => {
-        let query = "tags";
-        Todo.find().distinct(query, (err, docs) => {
-            if (err) {
-                console.log(err)
-            } else {
-                res.json(docs)
-            }
-        });
-    });
+    .get(todo.getTags);
 
 app.listen(port, () => {
     console.log('Running on port ' + port)

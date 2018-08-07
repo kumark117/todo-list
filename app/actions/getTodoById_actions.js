@@ -14,11 +14,12 @@ export function getTodos() {
     dispatch(getTodosBegin());
     return axios.get(`http://localhost:8000/api/todos/${values}`)
       .then(response => {
+        console.log(response)
         if (response.status === 200) {
           dispatch(getTodoByIdSuccess(response))
         }
       })
-      (error) => {
+      error => {
         dispatch(getTodosError(error))
       };
   };

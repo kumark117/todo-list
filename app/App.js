@@ -3,7 +3,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import HomePage from './containers/HomePage';
+import HomePage from './containers/HomePage.jsx';
 
 export default class App extends React.Component {
 	constructor(props) {
