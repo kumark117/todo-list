@@ -4,7 +4,7 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
-const todo = require('./controllers/todo');
+const controller = require('./controllers/todo');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,21 +24,21 @@ const todoRouter = express.Router();
 app.use('/api', todoRouter);
 
 todoRouter.route('/todos')
-    .get(todo.getTodos)
-    .post(todo.addTodo);
+    .get(controller.getTodos)
+    .post(controller.addTodo);
 
-todoRouter.route('/todos/:_id/')
-    .get(todo.getTodoById)
-    .delete(todo.deleteTodoById);
+todoRouter.route('/todos/:_id')
+    .get(controller.getTodoById)
+    .delete(controller.deleteTodoById);
 
-todoRouter.route('/todos/complete/:_id')    // put id before complete
-    .put(todo.completeTodo);
+todoRouter.route('/todos/:_id/complete')
+    .put(controller.completeTodo);
 
-todoRouter.route('/todos/recover/:_id')     // put id before recover
-    .put(todo.recoverTodo);
+todoRouter.route('/todos/:_id/recover')
+    .put(controller.recoverTodo);
 
 todoRouter.route('/tags')
-    .get(todo.getTags);
+    .get(controller.getTags);
 
 app.listen(port, () => {
     console.log('Running on port ' + port)

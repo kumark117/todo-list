@@ -22,13 +22,14 @@ export const completeTodoError = error => ({
 export function completeTodo(id) {
   return (dispatch) => {
     dispatch(completeTodoBegin());
-    return axios.put(`http://localhost:8000/api/todos/complete/${id}`)
+    return axios.put(`http://localhost:8000/api/todos/${id}/complete`)
       .then((response) => {
         if (response.status === 200) {
           dispatch(completeTodoSuccess(response));
         }
+      })
+      .catch((error) => {
+        dispatch(completeTodoError(error));
       });
-    (error) => {
-    };
   };
 }

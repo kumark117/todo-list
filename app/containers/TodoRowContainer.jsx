@@ -1,31 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getTodos } from '../actions/getTodos_actions';
 import { getTodoById } from '../actions/getTodoById_actions';
 import { getTodosSorted } from '../actions/getTodosSorted_actions';
-import { getTags } from '../actions/getTags_actions';
 import { completeTodo } from '../actions/completeTodo_actions';
+import { recoverTodo } from '../actions/recoverTodo_actions';
 import { removeTodo } from '../actions/removeTodo_actions';
 import TodoRow from '../components/TodoRow.jsx';
-import { recoverTodo } from '../actions/recoverTodo_actions';
 
 class TodoRowContainer extends Component {
 
   onClickComplete = () => {
     if (this.props.complete) {
       this.props.recoverTodo(this.props.id)
-      /* .then(() => this.props.getTodos()); */
-      .then(() => this.props.getTodoById(this.props.id));
+        .then((result) => {
+            this.props.getTodoById(this.props.id)
+        })
     } else {
       this.props.completeTodo(this.props.id)
-      .then(() => this.props.getTodos());
-      /* .then(() => this.props.getTodoById(this.props.id)); */
-    } 
+        .then((result) => {
+            this.props.getTodoById(this.props.id)
+        }) 
+    }
   };
 
   onClickDelete = () => {
     this.props.removeTodo(this.props.id)
-    .then(() => this.props.getTodosSorted());
+        .then(() => this.props.getTodosSorted());
   };
 
   render() {
@@ -44,6 +44,7 @@ class TodoRowContainer extends Component {
 
 function mapStateToProps(state) {
   return { 
+      /* todos: _.values(state.todos.todos), */
       todos: state.todos.todos,
       tags: state.todos.tags,
   };
@@ -51,10 +52,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getTodos: () => dispatch(getTodosSorted()),
-    getTodoById: (todoId) => dispatch(getTodoById(todoId)),
     getTodosSorted: () => dispatch(getTodosSorted()),
-    getTags: () => dispatch(getTags()),
+    getTodoById: (todoId) => dispatch(getTodoById(todoId)),
     completeTodo: (todoId) => dispatch(completeTodo(todoId)),
     recoverTodo: (todoId) => dispatch(recoverTodo(todoId)),
     removeTodo: (todoId) => dispatch(removeTodo(todoId)),

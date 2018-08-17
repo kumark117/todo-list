@@ -2,7 +2,7 @@ const initialState = {
   todos: {
     isLoading: false,
     error: null,
-    todos: [],
+    todos: {},
   },
   tags: {
     isLoading: false,
