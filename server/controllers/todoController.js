@@ -14,6 +14,17 @@ const getResponse = (res) => {
     };   
 }
 
+/* const modifyResponse = (res) => {
+    return (err, results) => {
+        if (err) {
+            res.status(500);
+            return next(err);
+        } else {
+            res.json({ success:  })
+        }
+    }
+} */
+
 exports.getTodos = (req, res) => {
     switch(req.query.query) {
         case 'sorted':
