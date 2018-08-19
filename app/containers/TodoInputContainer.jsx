@@ -15,14 +15,14 @@ class TodoInputContainer extends Component {
             todo: "",
             priority: "medium",
             tags: []
-        }
-    };
+        };
+    }
 
     onChangeText = (event) => {
         this.setState({
             todo: event.target.value
         });
-    };
+    }
 
     onClickButton = () => {
         let valuesToPost = {

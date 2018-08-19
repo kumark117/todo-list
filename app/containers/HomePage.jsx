@@ -16,7 +16,7 @@ class HomePage extends Component {
   }
 
   renderTodoList = () => {
-    if (!this.props.todos.length) {
+    if (!this.props.todos) {
       return <CircularProgress 
               size={40} thickness={5} />
     } else {
@@ -26,7 +26,7 @@ class HomePage extends Component {
   }
 
   renderSummaryBar = () => {
-    if (!this.props.tags.length || !this.props.todos.length) {
+    if (!this.props.tags.length || !this.props.todos) {
       return <CircularProgress 
                 size={40} thickness={5} />
     } else {

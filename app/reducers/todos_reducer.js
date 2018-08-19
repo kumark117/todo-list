@@ -26,17 +26,17 @@ const updateValueInMap = (map, key, value) => {
     }
 } */
 
-/* return {
-    ...state,
-    isLoading: false,
-    todos: {
-        ...state.todos,
-        [action.payload._id]: {
-            ...action.payload,
-        }
-    }
-  }; */
-
+const sortTodos = (state) => {
+    var keys = [];
+    Object.keys(state).map(key => keys.push(key))
+    keys.sort((a, b) => state[a].complete - state[b].complete)
+    var sortedMap = {};
+    keys.map(key => {
+        sortedMap[key] = state[key]
+    })
+    console.log(sortedMap)
+    return sortedMap;
+}
 
 export const selectTodos = (state) => _.values(state.todos)
 //map
@@ -64,13 +64,10 @@ export default function todosReducer(state = initialState.todos, action) {
       return {
         ...state,
         isLoading: false,
-        todos: state.todos.map(todo => {
-            if (todo._id === action.payload._id) {
-                return action.payload;
-            } else {
-                return todo;
-            }
-        })
+        todos: {
+            ...state.todos,
+            [action.payload._id]: action.payload,
+        },
       };
     case GET_TODOS_ERROR:
       return {
@@ -81,7 +78,7 @@ export default function todosReducer(state = initialState.todos, action) {
     case SORT_TODOS:
       return {
         ...state,
-        todos: action.payload,
+        todos: sortTodos(state.todos),
       };
     default:
       return state;

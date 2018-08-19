@@ -10,13 +10,13 @@ import IconButton from '@material-ui/core/IconButton';
 class SummaryBar extends Component {
 
   onSortTodos = () => {
-    const sortedTodos = [...this.props.todos].sort((a, b) => a.complete - b.complete);
-    this.props.sortTodos(sortedTodos);
+    this.props.sortTodos();
   }
 
   render() {
-    const remainingTodos = this.props.todos.filter((todo) => {
-      return !todo.complete;
+    const { todos } = this.props;
+    const remainingTodos = Object.keys(todos).filter(key => {
+      return !todos[key].complete;
     });
     return (
       <div>
@@ -49,12 +49,8 @@ function mapStateToProps(state) {
         todos: state.todos.todos,
         tags: state.tags.tags,
     };
-  }
-
-function mapDispatchToProps(dispatch) { 
-    return {
-        sortTodos: (sortedTodos) => dispatch(sortTodos(sortedTodos)),
-    };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SummaryBar);
+export default connect(mapStateToProps, {
+    sortTodos
+})(SummaryBar);

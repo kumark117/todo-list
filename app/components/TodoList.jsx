@@ -5,13 +5,13 @@ export default function TodoList({ todos }) {
   return (
     <div>
       {
-        todos.map(todo => (
+        Object.keys(todos).map(key => (
           <TodoRowContainer
-            key={todo._id}
-            id={todo._id}
-            todo={todo.todo}
-            tags={todo.tags}
-            complete={todo.complete}
+            key={todos[key]._id}
+            id={todos[key]._id}
+            todo={todos[key].todo}
+            tags={todos[key].tags}
+            complete={todos[key].complete}
           />
         ))
       }
