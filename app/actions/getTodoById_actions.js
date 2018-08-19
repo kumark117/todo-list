@@ -12,7 +12,6 @@ export function getTodoById(id) {
     dispatch(getTodosBegin());
     return axios.get(`http://localhost:8000/api/todos/${id}`)
       .then((response) => {
-        console.log(response.status)
         if (response.status === 200) {
           dispatch(getTodoByIdSuccess(response));
         }

@@ -42,7 +42,7 @@ exports.getTodos = (req, res) => {
 
 exports.addTodo = (req, res) => {
     let todo = new Todo(req.body);
-    Todo.save((err, todo) => {
+    todo.save((err, todo) => {
         if (err) {
             res.status(500);
             return next(err);

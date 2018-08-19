@@ -10,22 +10,6 @@ import {
 import initialState from './InitialState';
 import _ from 'lodash'
 
-/* const updateTodoInsideTodos = (todos, todo) => {
-    const x = {}
-    for (k in todos) {
-        x[k] = todos[k]
-    }
-    x[todo.id] = todo
-    return x
-}
-
-const updateValueInMap = (map, key, value) => {
-    return {
-        ...map,
-        [key]: value
-    }
-} */
-
 const sortTodos = (state) => {
     var keys = [];
     Object.keys(state).map(key => keys.push(key))
@@ -84,3 +68,19 @@ export default function todosReducer(state = initialState.todos, action) {
       return state;
   }
 }
+
+/* const updateTodoInsideTodos = (todos, todo) => {
+    const x = {}
+    for (k in todos) {
+        x[k] = todos[k]
+    }
+    x[todo.id] = todo
+    return x
+}
+
+const updateValueInMap = (map, key, value) => {
+    return {
+        ...map,
+        [key]: value
+    }
+} */
