@@ -10,6 +10,7 @@ import {
 import initialState from './InitialState';
 import _ from 'lodash'
 
+// a function to manually sort the todos by whether they are complete
 const sortTodos = (state) => {
     var keys = [];
     Object.keys(state).map(key => keys.push(key))

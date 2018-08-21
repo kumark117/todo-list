@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import TextField from 'material-ui/TextField';
 import ChipInput from 'material-ui-chip-input';
 
 export default function ChipInputTags(props) {

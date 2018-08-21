@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getTodoById } from '../actions/getTodoById_actions';
-import { getTodosSorted } from '../actions/getTodosSorted_actions';
-import { completeTodo } from '../actions/completeTodo_actions';
-import { recoverTodo } from '../actions/recoverTodo_actions';
-import { removeTodo } from '../actions/removeTodo_actions';
-import TodoRow from '../components/TodoRow.jsx';
+import TodoRow from './presentational/TodoRow.jsx';
+import { getTodoById } from '../../actions/getTodoById_actions';
+import { getTodosSorted } from '../../actions/getTodosSorted_actions';
+import { completeTodo } from '../../actions/completeTodo_actions';
+import { recoverTodo } from '../../actions/recoverTodo_actions';
+import { removeTodo } from '../../actions/removeTodo_actions';
 
 class TodoRowContainer extends Component {
 

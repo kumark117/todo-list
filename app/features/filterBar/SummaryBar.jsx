@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { sortTodos } from '../actions/sortTodos_actions';
-import Button from '@material-ui/core/Button';
-import TagsList from '../components/TagsList.jsx';
-import PriorityFilters from '../components/PriorityFilters.jsx';
-import FilterListIcon from '@material-ui/icons/FilterList';
 import IconButton from '@material-ui/core/IconButton';
+import FilterListIcon from '@material-ui/icons/FilterList';
+import TagsList from './presentational/TagsList.jsx';
+import PriorityFilters from './presentational/PriorityFilters.jsx';
+import { sortTodos } from '../../actions/sortTodos_actions';
 
 class SummaryBar extends Component {
 

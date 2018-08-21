@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Card } from 'material-ui/Card';
-import Paper from 'material-ui/Paper';
-import TodoInputContainer from './TodoInputContainer.jsx';
 import { connect } from 'react-redux';
-import { getTodosSorted } from '../actions/getTodosSorted_actions';
-import { getTags } from '../actions/getTags_actions';
-import TodoList from '../components/TodoList.jsx';
+import Paper from 'material-ui/Paper';
 import CircularProgress from 'material-ui/CircularProgress';
+import TodoInputContainer from '../form/TodoInputContainer.jsx';
+import TodoList from '../list/TodoList.jsx';
+import { getTodosSorted } from '../../actions/getTodosSorted_actions';
+import { getTags } from '../../actions/getTags_actions';
+
+
 import SummaryBar from './SummaryBar.jsx';
 
 class HomePage extends Component {
