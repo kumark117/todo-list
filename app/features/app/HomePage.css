@@ -1,0 +1,16 @@
+.Main {
+    padding: 40px;
+    display: flex;
+}
+
+.filter-bar-paper {
+    padding: 40px;
+    padding-top: 20px;
+    margin-right: 25px;
+}
+
+.todos-paper {
+    width: 70%;
+    padding: 40px;
+    padding-top: 20;
+}

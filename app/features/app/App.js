@@ -6,12 +6,10 @@ import MenuItem from 'material-ui/MenuItem';
 import HomePage from './HomePage.jsx';
 
 export default class App extends React.Component {
-	constructor(props) {
-    	super(props);
-    	this.state = {
-      		open: false
-    	};
-  	}
+    
+    state = {
+        open: false
+    }
 
   	toggleDrawerMenu = () => {
     	this.setState({

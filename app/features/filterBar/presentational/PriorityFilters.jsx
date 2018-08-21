@@ -25,11 +25,9 @@ const styles = {
 };
 
 class PriorityFilters extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: '',
-    };
+
+  state = {
+      value: ''
   }
 
   onSelectPriority = (event) => {

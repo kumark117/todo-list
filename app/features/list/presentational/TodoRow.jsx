@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ListItem } from 'material-ui/List';
 import Checkbox from 'material-ui/Checkbox';
 import IconButton from 'material-ui/IconButton';
@@ -35,4 +36,10 @@ export default function TodoRow({
       />
     </div>
   );
+}
+
+TodoRow.propTypes = {
+    complete: PropTypes.bool,
+    onClickComplete: PropTypes.func.isRequired,
+    onClickDelete: PropTypes.func.isRequired,
 }

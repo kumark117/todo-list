@@ -6,7 +6,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { createStore, applyMiddleware, compose } from 'redux';
 import promise from 'redux-promise';
 import thunk from 'redux-thunk';
-import App from './App';
+import App from './features/app/App';
 import reducers from './reducers';
 
 const createStoreWithMiddleware = compose(applyMiddleware(promise, thunk),

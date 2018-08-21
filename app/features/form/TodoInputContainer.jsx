@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
-import { Card } from 'material-ui/Card';
-import TextInput from '../components/TextInput.jsx';
-import ChipInputTags from '../components/ChipInputTags.jsx';
-import AddButton from '../components/AddButton.jsx';
-import SelectPriority from '../components/SelectPriority.jsx';
+import TextInput from './presentational/TextInput.jsx';
+import ChipInputTags from './presentational/ChipInputTags.jsx';
+import AddButton from './presentational/AddButton.jsx';
+import SelectPriority from './presentational/SelectPriority.jsx';
 import { connect } from 'react-redux';
-import { postTodo } from '../actions/postTodo_actions';
-import { getTodos } from '../actions/getTodos_actions';
+import { postTodo } from '../../actions/postTodo_actions';
+import { getTodos } from '../../actions/getTodos_actions';
 
 class TodoInputContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            todo: "",
-            priority: "medium",
-            tags: []
-        };
+
+    state = {
+        todo: "",
+        priority: "medium",
+        tags: []
     }
 
     onChangeText = (event) => {

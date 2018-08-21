@@ -6,7 +6,7 @@ import TagsList from './presentational/TagsList.jsx';
 import PriorityFilters from './presentational/PriorityFilters.jsx';
 import { sortTodos } from '../../actions/sortTodos_actions';
 
-class SummaryBar extends Component {
+class FilterBar extends Component {
 
   onSortTodos = () => {
     this.props.sortTodos();
@@ -52,4 +52,4 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
     sortTodos
-})(SummaryBar);
+})(FilterBar);

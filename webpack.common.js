@@ -19,14 +19,8 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         use: ['style-loader', 'css-loader'],
-        include: /node_modules/,
-        exclude: /flexboxgrid/
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-        include: /flexboxgrid/,
       },
     ],
   },

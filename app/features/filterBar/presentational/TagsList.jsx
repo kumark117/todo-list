@@ -1,5 +1,6 @@
 import React from 'react';
-import ChipFilters from './ChipFilters.jsx';
+import PropTypes from 'prop-types';
+import ChipFilters from '../../../components/ChipFilters.jsx';
 
 export default function TagsList({ tags }) {
   return (
@@ -15,3 +16,7 @@ export default function TagsList({ tags }) {
     </div>
   );
 }
+
+TagsList.propTypes = {
+    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
