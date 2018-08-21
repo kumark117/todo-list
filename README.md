@@ -1,4 +1,6 @@
 # todo-app
 
-React front-end, 
-Express back-end
+Mongo <br />
+Express <br />
+React <br />
+Node <br />
