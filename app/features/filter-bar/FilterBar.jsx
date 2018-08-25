@@ -5,6 +5,9 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import TagsList from './presentational/TagsList.jsx';
 import PriorityFilters from './presentational/PriorityFilters.jsx';
 import { sortTodos } from '../../actions/sortTodos_actions';
+import { filterTodos } from '../../actions/filterTodos_actions';
+import AddButton from '../form/presentational/AddButton.jsx';
+import { GET_TODOS_SORTED_BEGIN } from '../../actions/types';
 
 class FilterBar extends Component {
 
@@ -12,11 +15,13 @@ class FilterBar extends Component {
     this.props.sortTodos();
   }
 
+  onFilterTodos = (event) => {
+    this.props.filterTodos(event);
+  }
+
   render() {
-    const { todos } = this.props;
-    const remainingTodos = Object.keys(todos).filter(key => {
-      return !todos[key].complete;
-    });
+    const { todos, tags } = this.props;
+    const remainingTodos = Object.keys(todos).filter(key => !todos[key].complete);
     return (
       <div>
         <p>
@@ -28,15 +33,16 @@ class FilterBar extends Component {
           Filter by
         </p>
         <div style={{ 'display': 'flex', 'alignItems': 'flex-end' }}>
-            <IconButton 
-                onClick={this.onSortTodos}>
+            <IconButton onClick={this.onSortTodos}>
                 <FilterListIcon />
             </IconButton>
             <p>complete</p>
         </div>
-        <PriorityFilters />
-        <TagsList
-          tags={this.props.tags}
+        <PriorityFilters 
+            onSelectPriority={this.onFilterTodos}
+            todos={todos}
+            remainingTodos={remainingTodos} />
+        <TagsList tags={tags}
         />
       </div>
     );
@@ -51,5 +57,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-    sortTodos
+    sortTodos,
+    filterTodos,
 })(FilterBar);

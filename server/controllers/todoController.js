@@ -9,7 +9,7 @@ const getResponse = (res) => {
             res.status(500);
             return next(err);
         } else {
-            res.json(results)
+            res.send(results)
         }
     };   
 }
@@ -59,12 +59,14 @@ exports.getTodoById = (req, res) => {
 
 exports.deleteTodoById = (req, res) => {
     let myQuery = { _id: req.params._id } 
-    Todo.deleteOne(myQuery, (err, response) => {
-        if (err) {
+    Todo.deleteOne(myQuery, (err, todo) => {
+        if (!todo) {
+            res.status(404)
+        } else if (err) {
             res.status(500);
             return next(err);
         } else {
-            res.json({ success: req.params._id })
+            res.send({ success: req.params._id })
         }
     });
 }

@@ -27,15 +27,41 @@ const styles = {
 class PriorityFilters extends Component {
 
   state = {
-      value: ''
+      value: "all"
   }
 
   onSelectPriority = (event) => {
     this.setState({ value: event.target.value });
   }
 
+  remainingTodosByPriority = (todos, remainingTodos) => {
+    let remainingLow = [];
+    let remainingMedium = []; 
+    let remainingHigh = [];
+    remainingTodos.map(key => {
+        switch(todos[key].priority) {
+            case "low":
+                console.log("this one is low")
+                remainingLow.push(key)
+            case "medium":
+                console.log(todos[key].todo, "this one is medium")
+                remainingMedium.push(key)
+            case "high":
+                console.log(todos[key].todo, "this one is high")
+                remainingHigh.push(key)
+        }
+    })
+    let remainingByPriorityMap = {};
+    remainingByPriorityMap["low"] = remainingLow.length
+    remainingByPriorityMap["medium"] = remainingMedium.length
+    remainingByPriorityMap["high"] = remainingHigh.length
+    return remainingByPriorityMap;
+  }
+
   render() {
-    const { classes } = this.props;
+    debugger;
+    const { classes, onSelectPriority, todos, remainingTodos } = this.props;
+    this.remainingTodosByPriority(todos, remainingTodos);
     return (
       <div>
         <FormControl component="fieldset" className={classes.formControl}>
@@ -43,12 +69,19 @@ class PriorityFilters extends Component {
             aria-label="Priority"
             name="priorityRadios"
             value={this.state.value}
-            onChange={this.onSelectPriority}
-          >
+            onChange={(event) => {
+                onSelectPriority(event.target.value);
+                this.setState({ value: event.target.value });
+            }} >
+            <FormControlLabel
+              value="all"
+              control={<Radio color="primary" />}
+              label="all"
+            />
             <FormControlLabel
               value="high"
               control={<Radio color="primary" />}
-              label="high"
+              label={`all (${remainingByPriorityMap.high})`}
             />
             <FormControlLabel
               value="medium"

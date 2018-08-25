@@ -26,17 +26,16 @@ export const postTodoError = (error) => {
 };
 
 export function postTodo(values) {
-  console.log(values);
   return (dispatch) => {
     dispatch(postTodoBegin());
     return axios.post('http://localhost:8000/api/todos', values)
-      .then(response => {
+      .then((response) => {
         if (response.status === 201) {
-          dispatch(postTodoSuccess(response))
+          dispatch(postTodoSuccess(response));
         }
       });
-      error => {
-        dispatch(postTodoError(error))
-      };
+    (error) => {
+      dispatch(postTodoError(error));
+    };
   }
 }

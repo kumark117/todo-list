@@ -6,21 +6,32 @@ import {
   GET_TODOS_SORTED_SUCCESS,
   GET_TODO_ID_SUCCESS,
   SORT_TODOS,
+  FILTER_TODOS,
 } from '../actions/types';
 import initialState from './InitialState';
 import _ from 'lodash'
 
 // a function to manually sort the todos by whether they are complete
 const sortTodos = (state) => {
-    var keys = [];
-    Object.keys(state).map(key => keys.push(key))
-    keys.sort((a, b) => state[a].complete - state[b].complete)
-    var sortedMap = {};
-    keys.map(key => {
+    //buildKeysList(state);
+    const sortedKeys = Object.keys(state).sort((a, b) => state[a].complete - state[b].complete)
+    let sortedMap = {};
+    sortedKeys.map(key => {
         sortedMap[key] = state[key]
     })
-    console.log(sortedMap)
     return sortedMap;
+}
+
+// function to return a filteredTodos object
+const filterTodos = (state, filterParam) => {
+    const filteredKeys = Object.keys(state).filter(key => {
+        return state[key].priority === filterParam
+    })
+    let filteredMap = {};
+    filteredKeys.map(key => {
+        filteredMap[key] = state[key]
+    })
+    return filteredMap;
 }
 
 export const selectTodos = (state) => _.values(state.todos)
@@ -64,6 +75,11 @@ export default function todosReducer(state = initialState.todos, action) {
       return {
         ...state,
         todos: sortTodos(state.todos),
+      };
+    case FILTER_TODOS:
+      return {
+          ...state,
+          filteredTodos: filterTodos(state.todos, action.payload),
       };
     default:
       return state;

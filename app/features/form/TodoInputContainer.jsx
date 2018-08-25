@@ -25,8 +25,10 @@ class TodoInputContainer extends Component {
         let valuesToPost = {
             ...this.state
         };
+        // post the new todos, and once the promise is resolved get all todos to re-render the list
+        // which will now include the new todo
         this.props.postTodo(valuesToPost)
-        .then(() => this.props.getTodos());
+            .then(() => this.props.getTodos());
         this.setState({
             todo: "",
             priority: "medium",
@@ -40,8 +42,9 @@ class TodoInputContainer extends Component {
         });
     }
 
+    // TODO as this seems to remove all chips
     onRemoveChip = (chip, index) => {
-        this.setState({     // TODO
+        this.setState({     
             tags: this.state.tags.filter((_, i) => {
                 i > 0
             })

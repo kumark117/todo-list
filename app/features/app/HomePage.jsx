@@ -4,7 +4,7 @@ import Paper from 'material-ui/Paper';
 import CircularProgress from 'material-ui/CircularProgress';
 import TodoInputContainer from '../form/TodoInputContainer.jsx';
 import TodoList from '../list/presentational/TodoList.jsx';
-import FilterBar from '../filterBar/FilterBar.jsx';
+import FilterBar from '../filter-bar/FilterBar.jsx';
 import { getTodosSorted } from '../../actions/getTodosSorted_actions';
 import { getTags } from '../../actions/getTags_actions';
 import styles from './HomePage.css';
@@ -16,14 +16,18 @@ class HomePage extends Component {
     this.props.getTags();
   }
 
+  // only render the todo list once the todos have been returned from getSortedTodos()
   renderTodoList = () => {
-    if (!this.props.todos) {
+    const { todos, filteredTodos } = this.props;
+    if (!todos) {
       return <CircularProgress size={40} thickness={5} />
     } else {
-      return <TodoList todos={this.props.todos} />
-    };
+        return <TodoList
+                 todos={Object.keys(filteredTodos).length > 0 ? filteredTodos : todos} />
+    }
   }
 
+  // only render the filter bar once the tags and todos have been returned from getTags() and getSortedTodos()
   renderFilterBar = () => {
     if (!this.props.tags.length || !this.props.todos) {
       return <CircularProgress size={40} thickness={5} />
@@ -56,6 +60,7 @@ class HomePage extends Component {
 function mapStateToProps(state) {
   return { 
       todos: state.todos.todos,
+      filteredTodos: state.todos.filteredTodos,
       tags: state.tags.tags,
   };
 }

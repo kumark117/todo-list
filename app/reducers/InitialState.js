@@ -3,6 +3,7 @@ const initialState = {
     isLoading: false,
     error: null,
     todos: {},
+    filteredTodos: {},
   },
   tags: {
     isLoading: false,
