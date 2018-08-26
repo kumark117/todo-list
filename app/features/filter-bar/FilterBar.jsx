@@ -15,8 +15,9 @@ class FilterBar extends Component {
     this.props.sortTodos();
   }
 
-  onFilterTodos = (event) => {
-    this.props.filterTodos(event);
+  onFilterTodos = (filterField, filter) => {
+    console.log(filterField, filter)
+    this.props.filterTodos(filterField, filter);
   }
 
   render() {
@@ -42,7 +43,9 @@ class FilterBar extends Component {
             onSelectPriority={this.onFilterTodos}
             todos={todos}
             remainingTodos={remainingTodos} />
-        <TagsList tags={tags}
+        <TagsList 
+            tags={tags}
+            onSelectTag={this.onFilterTodos}
         />
       </div>
     );

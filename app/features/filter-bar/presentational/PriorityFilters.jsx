@@ -34,34 +34,8 @@ class PriorityFilters extends Component {
     this.setState({ value: event.target.value });
   }
 
-  remainingTodosByPriority = (todos, remainingTodos) => {
-    let remainingLow = [];
-    let remainingMedium = []; 
-    let remainingHigh = [];
-    remainingTodos.map(key => {
-        switch(todos[key].priority) {
-            case "low":
-                console.log("this one is low")
-                remainingLow.push(key)
-            case "medium":
-                console.log(todos[key].todo, "this one is medium")
-                remainingMedium.push(key)
-            case "high":
-                console.log(todos[key].todo, "this one is high")
-                remainingHigh.push(key)
-        }
-    })
-    let remainingByPriorityMap = {};
-    remainingByPriorityMap["low"] = remainingLow.length
-    remainingByPriorityMap["medium"] = remainingMedium.length
-    remainingByPriorityMap["high"] = remainingHigh.length
-    return remainingByPriorityMap;
-  }
-
   render() {
-    debugger;
-    const { classes, onSelectPriority, todos, remainingTodos } = this.props;
-    this.remainingTodosByPriority(todos, remainingTodos);
+    const { classes, onSelectPriority } = this.props;
     return (
       <div>
         <FormControl component="fieldset" className={classes.formControl}>
@@ -70,7 +44,7 @@ class PriorityFilters extends Component {
             name="priorityRadios"
             value={this.state.value}
             onChange={(event) => {
-                onSelectPriority(event.target.value);
+                onSelectPriority("priority", event.target.value);
                 this.setState({ value: event.target.value });
             }} >
             <FormControlLabel
@@ -81,7 +55,7 @@ class PriorityFilters extends Component {
             <FormControlLabel
               value="high"
               control={<Radio color="primary" />}
-              label={`all (${remainingByPriorityMap.high})`}
+              label="high"
             />
             <FormControlLabel
               value="medium"

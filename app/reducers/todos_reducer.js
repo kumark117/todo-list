@@ -11,9 +11,8 @@ import {
 import initialState from './InitialState';
 import _ from 'lodash'
 
-// a function to manually sort the todos by whether they are complete
+// a function to manually sort the todos by complete
 const sortTodos = (state) => {
-    //buildKeysList(state);
     const sortedKeys = Object.keys(state).sort((a, b) => state[a].complete - state[b].complete)
     let sortedMap = {};
     sortedKeys.map(key => {
@@ -23,15 +22,32 @@ const sortTodos = (state) => {
 }
 
 // function to return a filteredTodos object
-const filterTodos = (state, filterParam) => {
-    const filteredKeys = Object.keys(state).filter(key => {
-        return state[key].priority === filterParam
-    })
+const filterTodos = (state, filterField, filterParam) => {
+    if (filterField === "priority") {
+        var filteredKeys = Object.keys(state).filter(key => {
+            return state[key].priority === filterParam;
+        })
+    } else if (filterField === "tag") {
+        var filteredKeys = Object.keys(state).filter(key => {
+            return state[key].tags[0] === filterParam;
+        })
+    }
     let filteredMap = {};
     filteredKeys.map(key => {
         filteredMap[key] = state[key]
     })
     return filteredMap;
+}
+
+const updateFilteredTodos = (state, payload) => {
+    if (Object.keys(state).length > 0) {
+        return {
+            ...state,
+            [payload._id]: payload,
+        }
+    } else {
+        return {};
+    }
 }
 
 export const selectTodos = (state) => _.values(state.todos)
@@ -64,6 +80,7 @@ export default function todosReducer(state = initialState.todos, action) {
             ...state.todos,
             [action.payload._id]: action.payload,
         },
+        filteredTodos: updateFilteredTodos(state.filteredTodos, action.payload),
       };
     case GET_TODOS_ERROR:
       return {
@@ -79,7 +96,7 @@ export default function todosReducer(state = initialState.todos, action) {
     case FILTER_TODOS:
       return {
           ...state,
-          filteredTodos: filterTodos(state.todos, action.payload),
+          filteredTodos: filterTodos(state.todos, action.payload.filterField, action.payload.filter),
       };
     default:
       return state;

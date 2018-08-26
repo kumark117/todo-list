@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ChipFilters from '../../../components/ChipFilters.jsx';
+import Chip from '@material-ui/core/Chip';
 
-export default function TagsList({ tags }) {
+export default function TagsList({ tags, onSelectTag }) {
   return (
     <div>
       {
         tags.map(tag => (
-          <ChipFilters
-            label={tag}
+          <Chip
             key={tag}
+            label={tag}
+            onClick={() => onSelectTag("tag", tag)}
           />
         ))
       }
@@ -18,5 +19,6 @@ export default function TagsList({ tags }) {
 }
 
 TagsList.propTypes = {
-    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onSelectTag: PropTypes.func.isRequired,
 };
