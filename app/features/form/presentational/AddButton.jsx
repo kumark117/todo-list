@@ -5,7 +5,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 const AddButton = ({ onClick, disabled }) => (
   <Button
-    style={{ marginTop: 20 }}
+    style={{ marginTop: 20, marginLeft: 40 }}
     color="primary"
     variant="fab"
     onClick={onClick}

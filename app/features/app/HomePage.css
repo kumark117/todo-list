@@ -7,10 +7,11 @@
     padding: 40px;
     padding-top: 20px;
     margin-right: 25px;
+    width: 250px;
 }
 
 .todos-paper {
-    width: 70%;
+    width: 55%;
     padding: 40px;
     padding-top: 20;
 }

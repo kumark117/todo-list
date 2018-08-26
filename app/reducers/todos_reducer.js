@@ -29,7 +29,7 @@ const filterTodos = (state, filterField, filterParam) => {
         })
     } else if (filterField === "tag") {
         var filteredKeys = Object.keys(state).filter(key => {
-            return state[key].tags[0] === filterParam;
+            return state[key].tags.includes(filterParam);
         })
     }
     let filteredMap = {};

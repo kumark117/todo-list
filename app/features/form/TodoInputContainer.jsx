@@ -6,6 +6,7 @@ import SelectPriority from './presentational/SelectPriority.jsx';
 import { connect } from 'react-redux';
 import { postTodo } from '../../actions/postTodo_actions';
 import { getTodos } from '../../actions/getTodos_actions';
+import styles from './TodoInputContainer.css';
 
 class TodoInputContainer extends Component {
 
@@ -16,15 +17,11 @@ class TodoInputContainer extends Component {
     }
 
     onChangeText = (event) => {
-        this.setState({
-            todo: event.target.value
-        });
+        this.setState({ todo: event.target.value });
     }
 
-    onClickButton = () => {
-        let valuesToPost = {
-            ...this.state
-        };
+    onAddTodo = () => {
+        let valuesToPost = { ...this.state };
         // post the new todos, and once the promise is resolved get all todos to re-render the list
         // which will now include the new todo
         this.props.postTodo(valuesToPost)
@@ -37,9 +34,7 @@ class TodoInputContainer extends Component {
     }
 
     onAddChip = (chip) => {
-        this.setState({
-            tags: [...this.state.tags, chip]
-        });
+        this.setState({ tags: [...this.state.tags, chip] });
     }
 
     // TODO as this seems to remove all chips
@@ -52,41 +47,36 @@ class TodoInputContainer extends Component {
     }
 
     onChangePriority = (event) => {
-        this.setState({
-            priority: event.target.value
-        });
+        this.setState({ priority: event.target.value });
     }
 
     render() {
+        const { todo, priority, tags } = this.state;
         return (
-            <div style={{ 'marginBottom': 50 }}>
-                <div style={{ 'display': 'flex', 'alignItems': 'center' }} >
+            <div className="Main-Input" >
+                <div className="Upper-input" >
                     <TextInput
                         onChange={this.onChangeText}
-                        value={this.state.todo} />
+                        value={todo} />
                 </div>
-                <div style={{ 'display': 'flex', 'width': '80%', 'alignItems': 'center', 'justifyContent': 'space-around' }}>
+                <div className="Lower-input" >
                     <ChipInputTags
-                        value={this.state.tags}
+                        value={tags}
                         onAddChip={this.onAddChip}
                         onRemoveChip={this.onRemoveChip} />
                     <SelectPriority 
                         value={this.state.priority}
                         onChangePriority={this.onChangePriority} />
                     <AddButton
-                        onClick={this.onClickButton}
-                        disabled={this.state.todo.length > 0 ? false : true} />
+                        onClick={this.onAddTodo}
+                        disabled={todo.length > 0 ? false : true} />
                 </div>
             </div>
         );
     }
 }
 
-function mapDispatchToProps(dispatch, values) { 
-    return {
-        postTodo: (values) => dispatch(postTodo(values)),
-        getTodos: () => dispatch(getTodos())
-    };
-}
-
-export default connect(null, mapDispatchToProps)(TodoInputContainer);
+export default connect(null, {
+    postTodo,
+    getTodos,
+})(TodoInputContainer);

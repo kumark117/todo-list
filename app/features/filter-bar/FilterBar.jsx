@@ -24,21 +24,22 @@ class FilterBar extends Component {
     const { todos, tags } = this.props;
     const remainingTodos = Object.keys(todos).filter(key => !todos[key].complete);
     return (
-      <div>
-        <p>
+      <div style={{ 'paddingTop': '15' }}>
+        <strong>
           {remainingTodos.length}
           {' '}
           items remaining
+        </strong>
+        <p><br />
+          Sort by
         </p>
-        <p>
-          Filter by
-        </p>
-        <div style={{ 'display': 'flex', 'alignItems': 'flex-end' }}>
+        <div style={{ 'display': 'flex', 'alignItems': 'flex-end', 'paddingBottom': '20' }}>
             <IconButton onClick={this.onSortTodos}>
                 <FilterListIcon />
             </IconButton>
             <p>complete</p>
         </div>
+        <p> Filter by </p>
         <PriorityFilters 
             onSelectPriority={this.onFilterTodos}
             todos={todos}

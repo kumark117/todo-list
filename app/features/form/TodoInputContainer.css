@@ -1,0 +1,13 @@
+.Main-Input {
+    width: 100%;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+.Lower-Input {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+}
