@@ -5,25 +5,19 @@ import {
   POST_TODO_ERROR,
 } from './types';
 
-export const postTodoBegin = () => {
-  return {
-    type: POST_TODO_BEGIN,
-  };
-};
+export const postTodoBegin = () => ({
+  type: POST_TODO_BEGIN,
+});
 
-export const postTodoSuccess = (response) => {
-  return {
-    type: POST_TODO_SUCCESS,
-    payload: response,
-  };
-};
+export const postTodoSuccess = response => ({
+  type: POST_TODO_SUCCESS,
+  payload: response,
+});
 
-export const postTodoError = (error) => {
-  return {
-    type: POST_TODO_ERROR,
-    payload: error,
-  };
-};
+export const postTodoError = error => ({
+  type: POST_TODO_ERROR,
+  payload: error,
+});
 
 export function postTodo(values) {
   return (dispatch) => {
@@ -33,9 +27,9 @@ export function postTodo(values) {
         if (response.status === 201) {
           dispatch(postTodoSuccess(response));
         }
+      })
+      .catch((error) => {
+        dispatch(postTodoError(error));
       });
-    (error) => {
-      dispatch(postTodoError(error));
-    };
-  }
+  };
 }

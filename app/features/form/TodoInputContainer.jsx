@@ -13,7 +13,7 @@ class TodoInputContainer extends Component {
     state = {
         todo: "",
         priority: "medium",
-        tags: []
+        tags: [],
     }
 
     onChangeText = (event) => {
@@ -29,7 +29,7 @@ class TodoInputContainer extends Component {
         this.setState({
             todo: "",
             priority: "medium",
-            tags: []
+            tags: [],
         });
     }
 
@@ -37,11 +37,11 @@ class TodoInputContainer extends Component {
         this.setState({ tags: [...this.state.tags, chip] });
     }
 
-    // TODO as this seems to remove all chips
     onRemoveChip = (chip, index) => {
+        console.log(chip, index)
         this.setState({     
             tags: this.state.tags.filter((_, i) => {
-                i > 0
+                return i !== index;
             })
         });
     }

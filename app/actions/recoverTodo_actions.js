@@ -1,4 +1,5 @@
 import axios from 'axios';
+import urlBuilder from '../utils/urlBuilder';
 import {
   RECOVER_TODO_BEGIN,
   RECOVER_TODO_SUCCESS,
@@ -22,7 +23,7 @@ export const recoverTodoError = error => ({
 export function recoverTodo(id) {
   return (dispatch) => {
     dispatch(recoverTodoBegin());
-    return axios.put(`http://localhost:8000/api/todos/${id}/recover`)
+    return axios.put(urlBuilder(`todos/${id}/recover`))
       .then((response) => {
         if (response.status === 200) {
           dispatch(recoverTodoSuccess(response));

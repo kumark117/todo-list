@@ -39,7 +39,11 @@ export default function TodoRow({
 }
 
 TodoRow.propTypes = {
-    complete: PropTypes.bool,
-    onClickComplete: PropTypes.func.isRequired,
-    onClickDelete: PropTypes.func.isRequired,
-}
+  complete: PropTypes.bool,
+  onClickComplete: PropTypes.func.isRequired,
+  onClickDelete: PropTypes.func.isRequired,
+};
+
+TodoRow.defaultProps = {
+  complete: false,
+};

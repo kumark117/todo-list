@@ -5,14 +5,14 @@ import CircularProgress from 'material-ui/CircularProgress';
 import TodoInputContainer from '../form/TodoInputContainer.jsx';
 import TodoList from '../list/presentational/TodoList.jsx';
 import FilterBar from '../filter-bar/FilterBar.jsx';
-import { getTodosSorted } from '../../actions/getTodosSorted_actions';
+import { getTodos } from '../../actions/getTodos_actions';
 import { getTags } from '../../actions/getTags_actions';
 import styles from './HomePage.css';
 
 class HomePage extends Component {
 
   componentDidMount() {
-    this.props.getTodosSorted();
+    this.props.getTodos();
     this.props.getTags();
   }
 
@@ -23,13 +23,13 @@ class HomePage extends Component {
       return <CircularProgress size={40} thickness={5} />
     } else {
         return <TodoList
-                 todos={Object.keys(filteredTodos).length > 0 ? filteredTodos : todos} />
+                    todos={Object.keys(filteredTodos).length > 0 ? filteredTodos : todos} />
     }
   }
 
   // only render the filter bar once the tags and todos have been returned from getTags() and getSortedTodos()
   renderFilterBar = () => {
-    if (!this.props.tags.length || !this.props.todos) {
+    if (!this.props.todos) {
       return <CircularProgress size={40} thickness={5} />
     } else {
       return <FilterBar />
@@ -66,6 +66,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-    getTodosSorted,
+    getTodos,
     getTags
 })(HomePage);

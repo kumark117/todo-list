@@ -1,4 +1,5 @@
 import axios from 'axios';
+import urlBuilder from '../utils/urlBuilder';
 import {
   COMPLETE_TODO_BEGIN,
   COMPLETE_TODO_SUCCESS,
@@ -22,7 +23,7 @@ export const completeTodoError = error => ({
 export function completeTodo(id) {
   return (dispatch) => {
     dispatch(completeTodoBegin());
-    return axios.put(`http://localhost:8000/api/todos/${id}/complete`)
+    return axios.put(urlBuilder(`todos/${id}/complete`))
       .then((response) => {
         if (response.status === 200) {
           dispatch(completeTodoSuccess(response));

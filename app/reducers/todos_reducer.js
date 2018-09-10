@@ -36,6 +36,7 @@ const filterTodos = (state, filterField, filterParam) => {
     filteredKeys.map(key => {
         filteredMap[key] = state[key]
     })
+    console.log(filteredMap)
     return filteredMap;
 }
 

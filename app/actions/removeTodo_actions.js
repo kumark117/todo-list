@@ -1,5 +1,5 @@
-//import { urlBuilder } from '../utils/UrlBuilder';
 import axios from 'axios';
+import urlBuilder from '../utils/urlBuilder';
 import {
   REMOVE_TODO_BEGIN,
   REMOVE_TODO_SUCCESS,
@@ -22,15 +22,15 @@ export const removeTodoError = error => ({
 
 export function removeTodo(values) {
   return (dispatch) => {
-    dispatch(removeTodoBegin())
-    return axios.delete(`http://localhost:8000/api/todos/${values}`)
-      .then(response => {
+    dispatch(removeTodoBegin());
+    return axios.delete(urlBuilder(`todos/${values}`))
+      .then((response) => {
         if (response.status === 200) {
-          dispatch(removeTodoSuccess(response))
+          dispatch(removeTodoSuccess(response));
         }
       })
-    error => {
-      dispatch(removeTodoError(error))
-    };
-  }
+      .catch((error) => {
+        dispatch(removeTodoError(error));
+      });
+  };
 }
