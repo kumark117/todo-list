@@ -4,11 +4,12 @@ const initialState = {
     error: null,
     todos: {},
     filteredTodos: {},
+    isFiltered: false,
   },
   tags: {
     isLoading: false,
     error: null,
-    tags: [],
+    tags: ['All'],
   },
   postTodo: {
     isLoading: false,

@@ -1,26 +1,26 @@
 import axios from 'axios';
-import urlBuilder from '../utils/urlBuilder';
+import urlBuilder from '../utils/url-builder';
 import {
   GET_TODOS_BEGIN,
   GET_TODOS_SUCCESS,
   GET_TODOS_ERROR,
 } from './types';
 
-export const getTodosBegin = () => ({
+const getTodosBegin = () => ({
   type: GET_TODOS_BEGIN,
 });
 
-export const getTodosSuccess = response => ({
+const getTodosSuccess = response => ({
   type: GET_TODOS_SUCCESS,
   payload: response.data,
 });
 
-export const getTodosError = error => ({
+const getTodosError = error => ({
   type: GET_TODOS_ERROR,
   payload: error,
 });
 
-export function getTodos() {
+export default function getTodos() {
   return (dispatch) => {
     dispatch(getTodosBegin());
     return axios.get(urlBuilder('todos?query=sorted'))

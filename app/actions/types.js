@@ -28,3 +28,4 @@ export const RECOVER_TODO_ERROR = 'RECOVER_TODO_ERROR';
 //
 export const SORT_TODOS = 'SORT_TODOS';
 export const FILTER_TODOS = 'FILTER_TODOS';
+export const UNFILTER_TODOS = 'UNFILTER_TODOS';

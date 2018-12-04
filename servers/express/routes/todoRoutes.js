@@ -17,7 +17,7 @@ router.route('/todos/:_id')
 router.route('/todos/:_id/complete')
     .put(controller.completeTodo);
 
-router.route('/todos/:_id/recover')
+router.route('/todos/:_id/uncomplete')
     .put(controller.recoverTodo);
 
 router.route('/tags')

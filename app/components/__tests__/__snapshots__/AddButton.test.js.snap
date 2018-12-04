@@ -1,10 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AddButton renders correctly 1`] = `
+exports[`the AddButton component renders correctly 1`] = `
 <WithStyles(Button)
   color="primary"
+  onClick={[MockFunction]}
   style={
     Object {
+      "marginLeft": 40,
       "marginTop": 20,
     }
   }

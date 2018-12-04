@@ -1,29 +1,30 @@
 import axios from 'axios';
-import urlBuilder from '../utils/urlBuilder';
+import { asynch } from 'redux-async-middleware';
+import urlBuilder from '../utils/url-builder';
 import {
   RECOVER_TODO_BEGIN,
   RECOVER_TODO_SUCCESS,
   RECOVER_TODO_ERROR,
 } from './types';
 
-export const recoverTodoBegin = () => ({
+const recoverTodoBegin = () => ({
   type: RECOVER_TODO_BEGIN,
 });
 
-export const recoverTodoSuccess = response => ({
+const recoverTodoSuccess = response => ({
   type: RECOVER_TODO_SUCCESS,
   payload: response,
 });
 
-export const recoverTodoError = error => ({
+const recoverTodoError = error => ({
   type: RECOVER_TODO_ERROR,
   payload: error,
 });
 
-export function recoverTodo(id) {
+export default function recoverTodo(id) {
   return (dispatch) => {
     dispatch(recoverTodoBegin());
-    return axios.put(urlBuilder(`todos/${id}/recover`))
+    return axios.put(urlBuilder(`todos/${id}/uncomplete`))
       .then((response) => {
         if (response.status === 200) {
           dispatch(recoverTodoSuccess(response));
@@ -34,15 +35,3 @@ export function recoverTodo(id) {
       });
   };
 }
-
-
-// ------
-// https://github.com/benvan/redux-asynch-middleware
-// import {asynch} from 'redux-asynch-middleware'
-// const RECOVER_TODO = asynch('RECOVER_TODO')
-
-// export const recoverTodo = (id) => ({
-//     type: RECOVER_TODO,
-//     payload:{id},
-//     promise: getJSON(`http://localhost:8000/api/todos/${id}/recover`)
-// })

@@ -7,8 +7,9 @@ const TagsList = ({ tags, onSelectTag }) => (
     {
       tags.map(tag => (
         <Chip
+          style={{ margin: 5 }}
           key={tag}
-          label={tag}
+          label={tag === 'All' ? 'SHOW ALL' : tag}
           onClick={() => onSelectTag("tag", tag)}
         />
       ))

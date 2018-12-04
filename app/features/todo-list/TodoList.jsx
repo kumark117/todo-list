@@ -1,8 +1,9 @@
 import React from 'react';
-import TodoRowContainer from '../TodoRowContainer.jsx';
+import PropTypes from 'prop-types';
+import TodoRowContainer from './TodoRowContainer.jsx';
 
 const TodoList = ({ todos }) => (
-  <div>
+  <React.Fragment>
     {
       Object.keys(todos).map(key => (
         <TodoRowContainer
@@ -14,7 +15,11 @@ const TodoList = ({ todos }) => (
         />
       ))
     }
-  </div>
+  </React.Fragment>
 );
+
+TodoList.propTypes = {
+  todos: PropTypes.object.isRequired,
+};
 
 export default TodoList;

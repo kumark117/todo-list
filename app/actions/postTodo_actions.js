@@ -5,21 +5,21 @@ import {
   POST_TODO_ERROR,
 } from './types';
 
-export const postTodoBegin = () => ({
+const postTodoBegin = () => ({
   type: POST_TODO_BEGIN,
 });
 
-export const postTodoSuccess = response => ({
+const postTodoSuccess = response => ({
   type: POST_TODO_SUCCESS,
   payload: response,
 });
 
-export const postTodoError = error => ({
+const postTodoError = error => ({
   type: POST_TODO_ERROR,
   payload: error,
 });
 
-export function postTodo(values) {
+export default function postTodo(values) {
   return (dispatch) => {
     dispatch(postTodoBegin());
     return axios.post('http://localhost:8000/api/todos', values)

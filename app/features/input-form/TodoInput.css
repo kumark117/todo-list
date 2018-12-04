@@ -1,4 +1,4 @@
-.Main-Input {
+.main-input {
     width: 100%;
     margin-bottom: 50px;
     display: flex;
@@ -6,8 +6,7 @@
     padding-left: 20px;
 }
 
-.Lower-Input {
+.lower-input {
     display: flex;
     align-items: center;
-    /* justify-content: space-around; */
 }

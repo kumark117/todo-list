@@ -9,7 +9,7 @@ import {
   REMOVE_TODO_SUCCESS,
   REMOVE_TODO_ERROR,
 } from '../actions/types';
-import initialState from './InitialState';
+import initialState from './initialState';
 
 export default function modifyTodoReducer(state = initialState.modifyTodo, action) {
   switch (action.type) {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SelectPriority renders correctly 1`] = `
+exports[`the SelectPriority component renders correctly 1`] = `
 <div
   style={
     Object {
@@ -20,19 +20,24 @@ exports[`SelectPriority renders correctly 1`] = `
   </WithStyles(InputLabel)>
   <WithStyles(Select)
     autoWidth={false}
+    onChange={[MockFunction]}
+    value="High"
   >
     <WithStyles(MenuItem)
-      value="high"
+      key="High"
+      value="High"
     >
       High
     </WithStyles(MenuItem)>
     <WithStyles(MenuItem)
-      value="medium"
+      key="Medium"
+      value="Medium"
     >
       Medium
     </WithStyles(MenuItem)>
     <WithStyles(MenuItem)
-      value="low"
+      key="Low"
+      value="Low"
     >
       Low
     </WithStyles(MenuItem)>

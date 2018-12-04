@@ -3,7 +3,7 @@ import {
   POST_TODO_SUCCESS,
   POST_TODO_ERROR,
 } from '../actions/types';
-import initialState from './InitialState';
+import initialState from './initialState';
 
 export default function postTodoReducer(state = initialState.postTodo, action) {
   switch (action.type) {

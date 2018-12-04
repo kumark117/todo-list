@@ -4,6 +4,8 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 
+const options = ['High', 'Medium', 'Low'];
+
 const SelectPriority = ({ value, onChangePriority }) => (
   <div style={{ display: 'flex', flexDirection: 'column' }}>
     <InputLabel style={{ fontSize: 12 }}>
@@ -14,15 +16,13 @@ const SelectPriority = ({ value, onChangePriority }) => (
       onChange={onChangePriority}
       autoWidth={false}
     >
-      <MenuItem value="high">
-        High
-      </MenuItem>
-      <MenuItem value="medium">
-        Medium
-      </MenuItem>
-      <MenuItem value="low">
-        Low
-      </MenuItem>
+      {
+          options.map(option => (
+            <MenuItem value={option} key={option}>
+              {option}
+            </MenuItem>
+          ))
+      }
     </Select>
   </div>
 );

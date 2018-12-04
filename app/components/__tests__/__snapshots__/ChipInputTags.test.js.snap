@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the ChipInputTags component renders correctly 1`] = `
+<ChipInput
+  allowDuplicates={false}
+  clearOnBlur={true}
+  filter={[Function]}
+  floatingLabelText="Tags"
+  fullWidth={false}
+  newChipKeyCodes={
+    Array [
+      13,
+    ]
+  }
+  onRequestAdd={[Function]}
+  onRequestDelete={[Function]}
+  style={
+    Object {
+      "marginBottom": 12.5,
+      "marginRight": 15,
+    }
+  }
+  underlineShow={true}
+  value={
+    Array [
+      "chipOne",
+      "chip2",
+    ]
+  }
+/>
+`;

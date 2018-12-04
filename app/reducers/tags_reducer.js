@@ -3,7 +3,7 @@ import {
   GET_TAGS_SUCCESS,
   GET_TAGS_ERROR,
 } from '../actions/types';
-import initialState from './InitialState';
+import initialState from './initialState';
 
 export default function tagsReducer(state = initialState.tags, action) {
   switch (action.type) {
@@ -16,7 +16,7 @@ export default function tagsReducer(state = initialState.tags, action) {
       return {
         ...state,
         isLoading: false,
-        tags: action.payload,
+        tags: [...state.tags, ...action.payload],
       };
     case GET_TAGS_ERROR:
       return {

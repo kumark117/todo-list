@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 
-const TextInput = ({ value, onChange }) => (
+const TextInput = ({ value, onChange, label }) => (
   <TextField
-    floatingLabelText="What do you need to do?"
+    floatingLabelText={label}
     value={value}
     onChange={onChange}
     style={{ fontSize: 20, marginBottom: 10 }}
@@ -14,6 +14,7 @@ const TextInput = ({ value, onChange }) => (
 TextInput.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired,
 };
 
 export default TextInput;

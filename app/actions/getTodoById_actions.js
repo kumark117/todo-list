@@ -1,25 +1,25 @@
 import axios from 'axios';
-import urlBuilder from '../utils/urlBuilder';
+import urlBuilder from '../utils/url-builder';
 import {
   GET_TODO_ID_BEGIN,
   GET_TODO_ID_SUCCESS,
   GET_TODO_ID_ERROR,
 } from './types';
 
-export const getTodoByIdBegin = () => ({
+const getTodoByIdBegin = () => ({
   type: GET_TODO_ID_BEGIN,
 });
 
-export const getTodoByIdSuccess = response => ({
+const getTodoByIdSuccess = response => ({
   type: GET_TODO_ID_SUCCESS,
   payload: response.data,
 });
 
-export const getTodoByIdError = () => ({
+const getTodoByIdError = () => ({
   type: GET_TODO_ID_ERROR,
 });
 
-export function getTodoById(id) {
+export default function getTodoById(id) {
   return (dispatch) => {
     dispatch(getTodoByIdBegin());
     return axios.get(urlBuilder(`todos/${id}`))

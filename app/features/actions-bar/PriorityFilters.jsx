@@ -48,22 +48,22 @@ class PriorityFilters extends Component {
                 this.setState({ value: event.target.value });
             }} >
             <FormControlLabel
-              value="all"
+              value="All"
               control={<Radio color="primary" />}
               label="all"
             />
             <FormControlLabel
-              value="high"
+              value="High"
               control={<Radio color="primary" />}
               label="high"
             />
             <FormControlLabel
-              value="medium"
+              value="Medium"
               control={<Radio color="primary" />}
               label="medium"
             />
             <FormControlLabel
-              value="low"
+              value="Low"
               control={<Radio color="primary" />}
               label="low"
             />

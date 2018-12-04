@@ -3,9 +3,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import AddButton from '../AddButton.jsx';
 
-describe('AddButton', () => {
+describe('the AddButton component', () => {
   it('renders correctly', () => {
-    const wrapper = shallow(<AddButton />);
+    const mockProps = { onClick: jest.fn() };
+    const wrapper = shallow(<AddButton {...mockProps}/>);
     expect(wrapper).toMatchSnapshot();
   });
 });

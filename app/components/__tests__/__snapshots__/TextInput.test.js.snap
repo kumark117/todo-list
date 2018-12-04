@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the TextInput component renders correctly 1`] = `
+<TextField
+  disabled={false}
+  floatingLabelFixed={false}
+  fullWidth={false}
+  multiLine={false}
+  rows={1}
+  style={
+    Object {
+      "fontSize": 20,
+      "marginBottom": 10,
+    }
+  }
+  type="text"
+  underlineShow={true}
+  value="Test input"
+/>
+`;
