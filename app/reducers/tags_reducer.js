@@ -16,7 +16,7 @@ export default function tagsReducer(state = initialState.tags, action) {
       return {
         ...state,
         isLoading: false,
-        tags: [...state.tags, ...action.payload],
+        tags: ['All', ...action.payload],
       };
     case GET_TAGS_ERROR:
       return {

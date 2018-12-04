@@ -9,7 +9,7 @@ const initialState = {
   tags: {
     isLoading: false,
     error: null,
-    tags: ['All'],
+    tags: [],
   },
   postTodo: {
     isLoading: false,

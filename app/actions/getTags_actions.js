@@ -10,10 +10,13 @@ const getTagsBegin = () => ({
   type: GET_TAGS_BEGIN,
 });
 
-const getTagsSuccess = response => ({
-  type: GET_TAGS_SUCCESS,
-  payload: response.data,
-});
+const getTagsSuccess = response => {
+  console.log(response.data)
+  return {
+    type: GET_TAGS_SUCCESS,
+    payload: response.data,
+  }
+};
 
 const getTagsError = error => ({
   type: GET_TAGS_ERROR,

@@ -29,8 +29,11 @@ class TodoInputContainer extends Component {
     this.props.postTodo(valuesToPost)
       .then(() => {
         this.props.getTodos();
-        this.props.getTags();
-    })
+        // Update the tags list if there are new ones
+        if (valuesToPost.tags.length) {
+            this.props.getTags();
+        }
+    });
     this.setState({
       todo: '',
       priority: 'Medium',
