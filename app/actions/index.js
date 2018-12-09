@@ -5,8 +5,9 @@ import * as actions from './types';
  */
 
 // Actions creators for posting new todos
-export const postTodoBegin = () => ({
+export const postTodoBegin = id => ({
   type: actions.POST_TODO_BEGIN,
+  payload: id,
 });
 
 export const postTodoSuccess = response => ({
@@ -20,8 +21,9 @@ export const postTodoError = error => ({
 });
 
 // Action creators for getting todos
-export const getTodoByIdBegin = () => ({
+export const getTodoByIdBegin = id => ({
   type: actions.GET_TODO_ID_BEGIN,
+  payload: id,
 });
 
 export const getTodoByIdSuccess = response => ({
@@ -48,8 +50,9 @@ export const getTodosError = error => ({
 });
 
 // Action creators for completing/recovering todos
-export const completeTodoBegin = () => ({
+export const completeTodoBegin = id => ({
   type: actions.COMPLETE_TODO_BEGIN,
+  payload: id,
 });
 
 export const completeTodoSuccess = response => ({
@@ -62,8 +65,9 @@ export const completeTodoError = error => ({
   payload: error,
 });
 
-export const recoverTodoBegin = () => ({
+export const recoverTodoBegin = id => ({
   type: actions.RECOVER_TODO_BEGIN,
+  payload: id,
 });
 
 export const recoverTodoSuccess = response => ({
@@ -77,8 +81,9 @@ export const recoverTodoError = error => ({
 });
 
 // Actions creactors for removing todos
-export const removeTodoBegin = () => ({
+export const removeTodoBegin = id => ({
   type: actions.REMOVE_TODO_BEGIN,
+  payload: id,
 });
 
 export const removeTodoSuccess = response => ({

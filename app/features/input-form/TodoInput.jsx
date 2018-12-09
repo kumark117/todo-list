@@ -4,9 +4,11 @@ import TextInput from '../../components/TextInput.jsx';
 import ChipInputTags from '../../components/ChipInputTags.jsx';
 import AddButton from '../../components/AddButton.jsx';
 import SelectPriority from '../../components/SelectPriority.jsx';
-import postTodo from '../../actions/postTodo_actions';
-import getTodos from '../../actions/getTodos_actions';
-import getTags from '../../actions/getTags_actions';
+import {
+  postTodoBegin,
+  getTodos,
+  getTags,
+} from '../../actions';
 import './TodoInput.css';
 
 class TodoInputContainer extends Component {
@@ -25,15 +27,9 @@ class TodoInputContainer extends Component {
 
   // TODO - shouldn't round trip data
   onAddTodo = () => {
+    const { dispatch } = this.props;
     const valuesToPost = { ...this.state };
-    this.props.postTodo(valuesToPost)
-      .then(() => {
-        this.props.getTodos();
-        // Update the tags list if there are new ones
-        if (valuesToPost.tags.length) {
-            this.props.getTags();
-        }
-    });
+    dispatch(postTodoBegin(valuesToPost));
     this.setState({
       todo: '',
       priority: 'Medium',
@@ -84,8 +80,4 @@ class TodoInputContainer extends Component {
   }
 }
 
-export default connect(null, {
-  postTodo,
-  getTodos,
-  getTags,
-})(TodoInputContainer);
+export default connect()(TodoInputContainer);

@@ -5,14 +5,17 @@ import CircularProgress from 'material-ui/CircularProgress';
 import TodoInputContainer from '../input-form/TodoInput.jsx';
 import TodoList from '../todo-list/TodoList.jsx';
 import ActionsBar from '../actions-bar/ActionsBar.jsx';
-import getTodos from '../../actions/getTodos_actions';
-import getTags from '../../actions/getTags_actions';
+import {
+  getTodosBegin,
+  getTagsBegin,
+} from '../../actions';
 import './HomePage.css';
 
 class HomePage extends Component {
   componentDidMount() {
-    this.props.getTodos();
-    this.props.getTags();
+    const { dispatch } = this.props;
+    dispatch(getTodosBegin());
+    dispatch(getTagsBegin());
   }
 
   renderTodoList() {
@@ -26,7 +29,7 @@ class HomePage extends Component {
     if (isFiltered && Object.keys(filteredTodos).length) {
       return <TodoList todos={filteredTodos} />;
     }
-    return <p>None</p>;
+    return <span>None</span>;
   }
 
   renderActionsBar() {
@@ -66,7 +69,4 @@ const mapStateToProps = state => ({
   tags: state.tags.tags,
 });
 
-export default connect(mapStateToProps, {
-  getTodos,
-  getTags,
-})(HomePage);
+export default connect(mapStateToProps)(HomePage);
