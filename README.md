@@ -1,7 +1,4 @@
-# todo-app
+# A todo list
 
-Just another todo app built using:
-Mongo <br />
-Express <br />
-React (with Redux & Redux Saga)<br />
-Node <br />
+MERN stack (Mongo, Express, React, Node) with an optional Python Flask server <br />
+A Redux-Thunk vs Redux-Saga comparison
